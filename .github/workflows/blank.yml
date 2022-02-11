@@ -33,7 +33,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           mkdir docs
-          java -jar swagger-codegen-cli.jar generate -i mxp-dev-icadsistemi-apigw-dev.json -l html -o docs/
+          java -jar swagger-codegen-cli.jar generate -i mxp-dev-icadsistemi-apigw-dev.json -l html2 -o docs/
       
       - name: setup git config
         run: |
