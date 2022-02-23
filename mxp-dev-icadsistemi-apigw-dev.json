@@ -2,27 +2,30 @@
   "openapi" : "3.0.1",
   "info" : {
     "title" : "mxp-dev-icadsistemi-apigw",
-    "version" : "2022-02-08T09:21:12Z"
+    "version" : "2022-02-23T14:31:14Z"
   },
   "servers" : [ {
-    "url" : "https://4p0h06bdb8.execute-api.eu-south-1.amazonaws.com/{basePath}",
-    "variables" : {
-      "basePath" : {
-        "default" : "/dev"
-      }
-    }
+    "url" : "https://mxp-dev-apigw-public.icadsistemi.com"
   } ],
   "paths" : {
-    "/v1/categories" : {
-      "post" : {
-        "tags" : [ "Category" ],
-        "summary" : "Create new category",
-        "description" : "<h4>Not available for customer users. Available only if the user is a manager or has an higher level.</h4> Create new category with given data",
+    "/v1/invoices/active/{id}" : {
+      "put" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Update an existing invoice",
+        "description" : "<h4>Not available for customer users. Available only if the user is a manager or has an higher level.</h4> Update an exisisting invoice, using its id to find the proper invoice.",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/categoryInput"
+                "$ref" : "#/components/schemas/activeInvoiceHeaderInput"
               }
             }
           },
@@ -30,7 +33,7 @@
         },
         "responses" : {
           "201" : {
-            "description" : "Category successfully created",
+            "description" : "Invoice updated",
             "content" : { }
           },
           "400" : {
@@ -45,46 +48,8 @@
             "description" : "500 response",
             "content" : { }
           },
-          "403" : {
-            "description" : "403 response",
-            "content" : { }
-          }
-        },
-        "security" : [ {
-          "devicadapimainstackusersAuthorizerEA9C3B95" : [ ]
-        } ]
-      }
-    },
-    "/v1/payments/terms" : {
-      "get" : {
-        "tags" : [ "Payment Term" ],
-        "summary" : "Retrieve all payment terms",
-        "description" : "Retrieve all payment terms.",
-        "responses" : {
-          "404" : {
-            "description" : "404 response",
-            "content" : { }
-          },
-          "200" : {
-            "description" : "Retrieve all payment terms",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/paymentTermsOutputArray"
-                }
-              }
-            }
-          },
-          "400" : {
-            "description" : "400 response",
-            "content" : { }
-          },
-          "401" : {
-            "description" : "401 response",
-            "content" : { }
-          },
-          "500" : {
-            "description" : "500 response",
+          "204" : {
+            "description" : "204 response",
             "content" : { }
           },
           "403" : {
@@ -237,24 +202,16 @@
         } ]
       }
     },
-    "/v1/invoices/active/{id}" : {
-      "put" : {
-        "tags" : [ "Invoice" ],
-        "summary" : "Update an existing invoice",
-        "description" : "<h4>Not available for customer users. Available only if the user is a manager or has an higher level.</h4> Update an exisisting invoice, using its id to find the proper invoice.",
-        "parameters" : [ {
-          "name" : "id",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
+    "/v1/categories" : {
+      "post" : {
+        "tags" : [ "Category" ],
+        "summary" : "Create new category",
+        "description" : "<h4>Not available for customer users. Available only if the user is a manager or has an higher level.</h4> Create new category with given data",
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/activeInvoiceHeaderInput"
+                "$ref" : "#/components/schemas/categoryInput"
               }
             }
           },
@@ -262,7 +219,7 @@
         },
         "responses" : {
           "201" : {
-            "description" : "Invoice updated",
+            "description" : "Category successfully created",
             "content" : { }
           },
           "400" : {
@@ -277,10 +234,6 @@
             "description" : "500 response",
             "content" : { }
           },
-          "204" : {
-            "description" : "204 response",
-            "content" : { }
-          },
           "403" : {
             "description" : "403 response",
             "content" : { }
@@ -291,22 +244,22 @@
         } ]
       }
     },
-    "/v1/customers/qr" : {
+    "/v1/payments/terms" : {
       "get" : {
-        "tags" : [ "Customer" ],
-        "summary" : "Return customer qr code value",
-        "description" : "Return the string used to draw the customer qr code",
+        "tags" : [ "Payment Term" ],
+        "summary" : "Retrieve all payment terms",
+        "description" : "Retrieve all payment terms.",
         "responses" : {
           "404" : {
             "description" : "404 response",
             "content" : { }
           },
           "200" : {
-            "description" : "Retrieved qr value",
+            "description" : "Retrieve all payment terms",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/customerOutput"
+                  "$ref" : "#/components/schemas/paymentTermsOutputArray"
                 }
               }
             }
@@ -789,48 +742,6 @@
         } ]
       }
     },
-    "/v1/payments/modes" : {
-      "get" : {
-        "tags" : [ "Payment Mode" ],
-        "summary" : "Retrieve all payment modes",
-        "description" : "Retrieve all payment modes",
-        "responses" : {
-          "404" : {
-            "description" : "404 response",
-            "content" : { }
-          },
-          "200" : {
-            "description" : "Retrieve all payment modes",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/paymentModeOutputArray"
-                }
-              }
-            }
-          },
-          "400" : {
-            "description" : "400 response",
-            "content" : { }
-          },
-          "401" : {
-            "description" : "401 response",
-            "content" : { }
-          },
-          "500" : {
-            "description" : "500 response",
-            "content" : { }
-          },
-          "403" : {
-            "description" : "403 response",
-            "content" : { }
-          }
-        },
-        "security" : [ {
-          "devicadapimainstackusersAuthorizerEA9C3B95" : [ ]
-        } ]
-      }
-    },
     "/v1/appliedPrices/{id}" : {
       "get" : {
         "tags" : [ "Applied Prices" ],
@@ -971,38 +882,22 @@
         } ]
       }
     },
-    "/v1/invoices/active/search" : {
+    "/v1/payments/modes" : {
       "get" : {
-        "tags" : [ "Invoice" ],
-        "summary" : "Retrieve all invoices",
-        "description" : "Retrieve all available active invoices headers for the user.<h3>Query string parameters</h3><h4>One between <strong>supplierId</strong> and <strong>customerId</strong> must be set.Invoice&GO app must always set the <strong>customerId</strong> field, leaving empty the <strong>supplierId</strong>.</h4><br/>Status values are:<ul><li><strong>SF01</strong> for invoices to be approved (if supplierId is set)</li><li><strong>SF02</strong> for invoices ready to be sent (if supplierId is set)</li><li><strong>processing</strong> for invoices to be approved and ready to be sent (if customerId is set)</li><li><strong>history</strong> for historical invoices to be approved (both if supplierId or customerId is set)</li></ul>",
-        "parameters" : [ {
-          "name" : "supplierId",
-          "in" : "query",
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "name" : "status",
-          "in" : "query",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "name" : "customerId",
-          "in" : "query",
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
+        "tags" : [ "Payment Mode" ],
+        "summary" : "Retrieve all payment modes<h3>Query string parameters</h3><ul><li><strong>service</strong> is an optional parameter. If set, the value can be \"iegocustomer\", \"iegomanager\" and \"portalmanager\".If the value is <i>iegocustomer</i>, the endpoint will return the payment modes used for the Invoice&GO scopes.If the value is <i>iegomanager</i>, the endpoint will return the payment modes used for the Fe1Touch scopes.If the value is <i>portalmanager</i>, the endpoint will return the payment modes used for the Selfnet Portal scopes.If not set, the endpoint returns all the available payment modes.</li></ul><br/>",
+        "description" : "Retrieve all payment modes",
         "responses" : {
+          "404" : {
+            "description" : "404 response",
+            "content" : { }
+          },
           "200" : {
-            "description" : "Retrieve all available active invoices headers for the user",
+            "description" : "Retrieve all payment modes",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/activeInvoiceHeaderOutputArray"
+                  "$ref" : "#/components/schemas/paymentModeOutputArray"
                 }
               }
             }
@@ -1127,25 +1022,41 @@
         } ]
       }
     },
-    "/v1/appliedPrices" : {
-      "post" : {
-        "tags" : [ "Applied Prices" ],
-        "summary" : "Apply a new price with given data",
-        "description" : "<h4>Not available for customer users. Available only if the user is a manager or has an higher level.</h4> Apply a new price with given data. Here you can set a price level for an article on a specific fuel station.",
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/appliedPriceInput"
+    "/v1/invoices/active/search" : {
+      "get" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Retrieve all invoices",
+        "description" : "Retrieve all available active invoices headers for the user.<h3>Query string parameters</h3><h4>One between <strong>supplierId</strong> and <strong>customerId</strong> must be set.Invoice&GO app must always set the <strong>customerId</strong> field, leaving empty the <strong>supplierId</strong>.</h4><br/>Status values are:<ul><li><strong>SF01</strong> for invoices to be approved (if supplierId is set)</li><li><strong>SF02</strong> for invoices ready to be sent (if supplierId is set)</li><li><strong>processing</strong> for invoices to be approved and ready to be sent (if customerId is set)</li><li><strong>history</strong> for historical invoices to be approved (both if supplierId or customerId is set)</li></ul>",
+        "parameters" : [ {
+          "name" : "supplierId",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "status",
+          "in" : "query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "customerId",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Retrieve all available active invoices headers for the user",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/activeInvoiceHeaderOutputArray"
+                }
               }
             }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "201" : {
-            "description" : "Price successfully applied",
-            "content" : { }
           },
           "400" : {
             "description" : "400 response",
@@ -1169,16 +1080,16 @@
         } ]
       }
     },
-    "/v1/articles" : {
+    "/v1/appliedPrices" : {
       "post" : {
-        "tags" : [ "Article" ],
-        "summary" : "Create a new article",
-        "description" : "<h4>Not available for customer users. Available only if the user is a manager or has an higher level.</h4>Create new article with given data",
+        "tags" : [ "Applied Prices" ],
+        "summary" : "Apply a new price with given data",
+        "description" : "<h4>Not available for customer users. Available only if the user is a manager or has an higher level.</h4> Apply a new price with given data. Here you can set a price level for an article on a specific fuel station.",
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/articleInput"
+                "$ref" : "#/components/schemas/appliedPriceInput"
               }
             }
           },
@@ -1186,7 +1097,7 @@
         },
         "responses" : {
           "201" : {
-            "description" : "Article successfully created",
+            "description" : "Price successfully applied",
             "content" : { }
           },
           "400" : {
@@ -1261,19 +1172,58 @@
         } ]
       }
     },
+    "/v1/articles" : {
+      "post" : {
+        "tags" : [ "Article" ],
+        "summary" : "Create a new article",
+        "description" : "<h4>Not available for customer users. Available only if the user is a manager or has an higher level.</h4>Create new article with given data",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/articleInput"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Article successfully created",
+            "content" : { }
+          },
+          "400" : {
+            "description" : "400 response",
+            "content" : { }
+          },
+          "401" : {
+            "description" : "401 response",
+            "content" : { }
+          },
+          "500" : {
+            "description" : "500 response",
+            "content" : { }
+          },
+          "403" : {
+            "description" : "403 response",
+            "content" : { }
+          }
+        },
+        "security" : [ {
+          "devicadapimainstackusersAuthorizerEA9C3B95" : [ ]
+        } ]
+      }
+    },
     "/v1/users/search" : {
       "get" : {
         "tags" : [ "User" ],
         "summary" : "Retrieve users data",
         "description" : "Used to get an users array.<h3>INVOICE&GO</h3>For Invoice&GO usage, this endpoint is used to get the sub users created by a master customer user.<h3>SELFNET</h3>For Selfnet usage, this endpoint is used to get all users (customers and managers) of one supplier.<h3>Query string parameters</h3>The <strong>supplier_id</strong> contains the supplier of which you are searching the users. It must be used only for Selfnet requests.",
-        "parameters" : [ {
-          "name" : "supplier_id",
-          "in" : "query",
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
         "responses" : {
+          "404" : {
+            "description" : "404 response",
+            "content" : { }
+          },
           "200" : {
             "description" : "Users list, filterd with the received query parameters",
             "content" : {
@@ -1310,7 +1260,7 @@
       "get" : {
         "tags" : [ "Payment Periodicity" ],
         "summary" : "Retrieve all payment periodicities",
-        "description" : "Retrieve all available payment periodicities for the user",
+        "description" : "Retrieve all available payment periodicities for the user<h3>Query string parameters</h3><ul><li><strong>iegoinvoicing</strong> is an optional boolean parameter.If the value is <i>true</i>, the endpoint will return the payment periodicities used for the Invoice&GO scopes.If the value is <i>false</i>, the endpoint will return all the available payment periodicities used for the Fe1Touch scopes.If not set, the endpoint returns all the available payment periodicities.</li></ul><br/>",
         "responses" : {
           "404" : {
             "description" : "404 response",
@@ -1442,7 +1392,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/customerInputArray"
+                "$ref" : "#/components/schemas/customerInput"
               }
             }
           },
@@ -1970,18 +1920,53 @@
         } ]
       }
     },
-    "/v1/customers/qr/email" : {
-      "post" : {
-        "tags" : [ "Customer" ],
-        "summary" : "Send customer qr code",
-        "description" : "Sends a qr code with customer informations",
+    "/v1/invoices/{id}/print" : {
+      "get" : {
+        "tags" : [ "Invoice" ],
+        "summary" : "Print an existing invoice or show an invoice preview",
+        "description" : "Print or show invoice preview identified by id. The preview creates an xml file before it is sent to the SDI. The print gives the xml file after it is sent to the SDI.<h3>Query string parameters</h3><ul><li><strong>preview</strong>: if True, you request an invoice preview.</li><li><strong>type</strong> if set to \"active\" the systems refer to active invoices, if set to \"passive\" the system refers to the passive ones.</li><li><strong>output</strong> if set to \"stream\" the endpoint returns a base64 string, if set to \"url\" the endpoint returns an url to get the file. At the moment, \"stream\" is the only available value.</li></ul>",
+        "parameters" : [ {
+          "name" : "type",
+          "in" : "query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "output",
+          "in" : "query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "preview",
+          "in" : "query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
         "responses" : {
+          "200" : {
+            "description" : "A base64 string representing the requested file",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/base64String"
+                }
+              }
+            }
+          },
           "400" : {
             "description" : "400 response",
-            "content" : { }
-          },
-          "202" : {
-            "description" : "QR code send request accepted",
             "content" : { }
           },
           "401" : {
@@ -2006,7 +1991,7 @@
       "get" : {
         "tags" : [ "Supply" ],
         "summary" : "Get a supplies array",
-        "description" : "Used to get a supplies array.<br/> <h3>INVOICE&GO</h3><br/>For Invoice&GO usage, this endpoint is used to get supplies data from computers station. There are 2 use cases:<ol><li>Request from INVOICE&GO with receipt number: <strong>fuel_station_id</strong> and <strong>receipt_number</strong> must be set. This retrieves a single supply. In remote cases, it can return more than one supply.</li><li>Request from FE1TOUCH: <strong>fuel_station_id</strong>, <strong>dispenser_number</strong> and <strong>rows</strong> must be set. This returns a list of the last rows supplies. </li></ol>",
+        "description" : "Used to get a supplies array.<br/> <h3>INVOICE&GO</h3><br/>For Invoice&GO usage, this endpoint is used to get supplies data from computers station. There are 2 use cases:<ol><li>Request from INVOICE&GO with receipt number: <strong>fuel_station_id</strong> and <strong>receipt_number</strong> must be set. This retrieves a single supply. In remote cases, it can return more than one supply.<br/>If one or more supplies are returned, the system found useful data.<br/>If the http code is 204 (No content) the customer has to go on manually (or try again the procedure).<br/>In all other cases, the customer cannot go ahed. If in the error body there is the message <strong>\"Not found\"</strong>, the receipt number is wrong or the supply does not exist.If in the error there is the message <strong>\"Time out\"</strong>, the computer station did not response to our request.If in the error there is the message <strong>\"Petrol card\"</strong> means the supply was present, but was made using a petrol card and cannot be invoiced from the app.</li><li>Request from FE1TOUCH: <strong>fuel_station_id</strong>, <strong>dispenser_number</strong> and <strong>rows</strong> must be set. This returns a list of the last rows supplies. </li></ol>",
         "parameters" : [ {
           "name" : "dispenser_number",
           "in" : "query",
@@ -2022,6 +2007,13 @@
         }, {
           "name" : "receipt_number",
           "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "service",
+          "in" : "query",
+          "required" : true,
           "schema" : {
             "type" : "string"
           }
@@ -2065,33 +2057,12 @@
         } ]
       }
     },
-    "/v1/invoices/{id}/print" : {
+    "/v1/customers/{id}/qr" : {
       "get" : {
-        "tags" : [ "Invoice" ],
-        "summary" : "Print an existing invoice or show an invoice preview",
-        "description" : "Print or show invoice preview identified by id. The preview creates an xml file before it is sent to the SDI. The print gives the xml file after it is sent to the SDI.<h3>Query string parameters</h3><ul><li><strong>preview</strong>: if True, you request an invoice preview.</li><li><strong>type</strong> if set to \"active\" the systems refer to active invoices, if set to \"passive\" the system refers to the passive ones.</li></ul>",
+        "tags" : [ "Customer" ],
+        "summary" : "Return customer qr code value",
+        "description" : "Return the string used to draw the customer qr code",
         "parameters" : [ {
-          "name" : "type",
-          "in" : "query",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "name" : "output",
-          "in" : "query",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "name" : "preview",
-          "in" : "query",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
           "name" : "id",
           "in" : "path",
           "required" : true,
@@ -2100,12 +2071,16 @@
           }
         } ],
         "responses" : {
+          "404" : {
+            "description" : "404 response",
+            "content" : { }
+          },
           "200" : {
-            "description" : "A base64 string representing the requested file",
+            "description" : "Retrieved qr value",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/base64String"
+                  "$ref" : "#/components/schemas/customerOutput"
                 }
               }
             }
@@ -2181,6 +2156,88 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/articleOutputArray"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "400 response",
+            "content" : { }
+          },
+          "401" : {
+            "description" : "401 response",
+            "content" : { }
+          },
+          "500" : {
+            "description" : "500 response",
+            "content" : { }
+          },
+          "403" : {
+            "description" : "403 response",
+            "content" : { }
+          }
+        },
+        "security" : [ {
+          "devicadapimainstackusersAuthorizerEA9C3B95" : [ ]
+        } ]
+      }
+    },
+    "/v1/customers/{id}/qr/email" : {
+      "post" : {
+        "tags" : [ "Customer" ],
+        "summary" : "Send customer qr code",
+        "description" : "Sends a qr code with customer informations",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "400 response",
+            "content" : { }
+          },
+          "202" : {
+            "description" : "QR code send request accepted",
+            "content" : { }
+          },
+          "401" : {
+            "description" : "401 response",
+            "content" : { }
+          },
+          "500" : {
+            "description" : "500 response",
+            "content" : { }
+          },
+          "403" : {
+            "description" : "403 response",
+            "content" : { }
+          }
+        },
+        "security" : [ {
+          "devicadapimainstackusersAuthorizerEA9C3B95" : [ ]
+        } ]
+      }
+    },
+    "/v1/users/me" : {
+      "get" : {
+        "tags" : [ "User" ],
+        "summary" : "Return info about the logged user",
+        "description" : "Return info about the logged user",
+        "responses" : {
+          "404" : {
+            "description" : "404 response",
+            "content" : { }
+          },
+          "200" : {
+            "description" : "Retrieved user",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/userOutput"
                 }
               }
             }
@@ -2603,8 +2660,8 @@
     "/v1/users" : {
       "post" : {
         "tags" : [ "User" ],
-        "summary" : "Create a new user",
-        "description" : "Create new user with given data. From Invoice&GO app, master users can create sub user. It is used if a company manager, for example, wants to create one or more accounts for his employers.",
+        "summary" : "Create a users",
+        "description" : "Create new users with given data. From Invoice&GO app, master users can create sub users. It is used if a company manager, for example, wants to create one or more accounts for his employers.",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -3066,7 +3123,7 @@
       "get" : {
         "tags" : [ "ProductFamily" ],
         "summary" : "Retrieve all product families",
-        "description" : "Retrieve all available product families for the user",
+        "description" : "Retrieve all available product families for the user<h3>Query string parameters</h3><ul><li><strong>market</strong> is an optional boolean parameter.If the value is <i>true</i>, the endpoint will return OIL product families.If the value is <i>false</i>, the endpoint will return NON OIL product families.If not set, the endpoint returns all the available product families.</li></ul><br/>",
         "responses" : {
           "404" : {
             "description" : "404 response",
@@ -3284,56 +3341,6 @@
         } ]
       }
     },
-    "/v1/suppliers/{id}/protocols" : {
-      "get" : {
-        "tags" : [ "Protocol" ],
-        "summary" : "Retrieve protocols data",
-        "description" : "<h4>Not available for customer users. Available only if the user is a manager or has an higher level.</h4>Retrieve all protocols of the requested supplier",
-        "parameters" : [ {
-          "name" : "id",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "responses" : {
-          "404" : {
-            "description" : "404 response",
-            "content" : { }
-          },
-          "200" : {
-            "description" : "Protocols list",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/protocolOutputArray"
-                }
-              }
-            }
-          },
-          "400" : {
-            "description" : "400 response",
-            "content" : { }
-          },
-          "401" : {
-            "description" : "401 response",
-            "content" : { }
-          },
-          "500" : {
-            "description" : "500 response",
-            "content" : { }
-          },
-          "403" : {
-            "description" : "403 response",
-            "content" : { }
-          }
-        },
-        "security" : [ {
-          "devicadapimainstackusersAuthorizerEA9C3B95" : [ ]
-        } ]
-      }
-    },
     "/v1/customers/search" : {
       "get" : {
         "tags" : [ "Customer" ],
@@ -3396,6 +3403,56 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/customerOutputArray"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "400 response",
+            "content" : { }
+          },
+          "401" : {
+            "description" : "401 response",
+            "content" : { }
+          },
+          "500" : {
+            "description" : "500 response",
+            "content" : { }
+          },
+          "403" : {
+            "description" : "403 response",
+            "content" : { }
+          }
+        },
+        "security" : [ {
+          "devicadapimainstackusersAuthorizerEA9C3B95" : [ ]
+        } ]
+      }
+    },
+    "/v1/suppliers/{id}/protocols" : {
+      "get" : {
+        "tags" : [ "Protocol" ],
+        "summary" : "Retrieve protocols data",
+        "description" : "<h4>Not available for customer users. Available only if the user is a manager or has an higher level.</h4>Retrieve all protocols of the requested supplier",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "404" : {
+            "description" : "404 response",
+            "content" : { }
+          },
+          "200" : {
+            "description" : "Protocols list",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/protocolOutputArray"
                 }
               }
             }
@@ -3546,6 +3603,56 @@
         "responses" : {
           "201" : {
             "description" : "Created new invoice header",
+            "content" : { }
+          },
+          "400" : {
+            "description" : "400 response",
+            "content" : { }
+          },
+          "401" : {
+            "description" : "401 response",
+            "content" : { }
+          },
+          "500" : {
+            "description" : "500 response",
+            "content" : { }
+          },
+          "403" : {
+            "description" : "403 response",
+            "content" : { }
+          }
+        },
+        "security" : [ {
+          "devicadapimainstackusersAuthorizerEA9C3B95" : [ ]
+        } ]
+      }
+    },
+    "/v1/users/customer/{id}" : {
+      "post" : {
+        "tags" : [ "User" ],
+        "summary" : "Bind the current user to the input customer",
+        "description" : "Bind the current user to the input customer",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/userOutput"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Bound created",
             "content" : { }
           },
           "400" : {
@@ -3857,7 +3964,7 @@
           "properties" : {
             "article_id" : {
               "type" : "integer",
-              "description" : "Article referred by this price"
+              "description" : "Article id referred by this price"
             },
             "fuel_station_id" : {
               "type" : "integer",
@@ -3865,12 +3972,16 @@
             },
             "price_level_id" : {
               "type" : "integer",
-              "description" : "Price level (attended, unattended, self, ...)"
+              "description" : "Price level id (attended, unattended, self, ...)"
             },
             "start_datetime" : {
               "type" : "string",
               "description" : "The price is applied after this datetime",
               "format" : "date-time"
+            },
+            "article_name" : {
+              "type" : "string",
+              "description" : "Name of the article referred by this price"
             },
             "id" : {
               "type" : "integer",
@@ -3879,6 +3990,10 @@
             "unit_price" : {
               "type" : "number",
               "description" : "Applied unit price"
+            },
+            "price_level_name" : {
+              "type" : "string",
+              "description" : "Price level name (attended, unattended, self, ...)"
             }
           }
         }
@@ -4671,7 +4786,7 @@
         "properties" : {
           "article_id" : {
             "type" : "integer",
-            "description" : "Article referred by this price"
+            "description" : "Article id referred by this price"
           },
           "fuel_station_id" : {
             "type" : "integer",
@@ -4679,12 +4794,16 @@
           },
           "price_level_id" : {
             "type" : "integer",
-            "description" : "Price level (attended, unattended, self, ...)"
+            "description" : "Price level id (attended, unattended, self, ...)"
           },
           "start_datetime" : {
             "type" : "string",
             "description" : "The price is applied after this datetime",
             "format" : "date-time"
+          },
+          "article_name" : {
+            "type" : "string",
+            "description" : "Name of the article referred by this price"
           },
           "id" : {
             "type" : "integer",
@@ -4693,6 +4812,10 @@
           "unit_price" : {
             "type" : "number",
             "description" : "Applied unit price"
+          },
+          "price_level_name" : {
+            "type" : "string",
+            "description" : "Price level name (attended, unattended, self, ...)"
           }
         },
         "description" : "Applied price data output"
@@ -4837,14 +4960,18 @@
             "type" : "integer",
             "description" : "Unique user identifier"
           },
+          "customer_id" : {
+            "type" : "integer",
+            "description" : "Optional customer id linked to this user"
+          },
+          "vehicle_id" : {
+            "type" : "integer",
+            "description" : "Used to assign one specific vehicle to this user. When this is set, the user can use only this vehicle in Invoice&GO"
+          },
           "email" : {
             "type" : "string",
             "description" : "Login email",
             "format" : "email"
-          },
-          "card_id" : {
-            "type" : "integer",
-            "description" : "Used to assign one specific vehicle to this user. When this is set, the user can use only this vehicle in Invoice&GO"
           },
           "internal_properties" : {
             "type" : "object",
@@ -5372,10 +5499,6 @@
                     "type" : "number",
                     "description" : "0 if there is no discount on the transaction's total amount. "
                   },
-                  "unit_of_measure_id" : {
-                    "type" : "integer",
-                    "description" : "Unit of measure used"
-                  },
                   "payments" : {
                     "type" : "array",
                     "items" : {
@@ -5435,6 +5558,10 @@
                   "credit_note_detail_id" : {
                     "type" : "integer",
                     "description" : "Optional credit note detail id (used when this transaction is reversed)"
+                  },
+                  "unit_of_measure" : {
+                    "type" : "string",
+                    "description" : "Unit of measure used"
                   },
                   "id" : {
                     "type" : "integer",
@@ -5698,7 +5825,7 @@
         "properties" : {
           "article_id" : {
             "type" : "integer",
-            "description" : "Article referred by this price"
+            "description" : "Article id referred by this price"
           },
           "fuel_station_id" : {
             "type" : "integer",
@@ -5706,7 +5833,7 @@
           },
           "price_level_id" : {
             "type" : "integer",
-            "description" : "Price level (attended, unattended, self, ...)"
+            "description" : "Price level id (attended, unattended, self, ...)"
           },
           "start_datetime" : {
             "type" : "string",
@@ -6140,10 +6267,6 @@
                   "type" : "number",
                   "description" : "0 if there is no discount on the transaction's total amount. "
                 },
-                "unit_of_measure_id" : {
-                  "type" : "integer",
-                  "description" : "Unit of measure used"
-                },
                 "payments" : {
                   "type" : "array",
                   "items" : {
@@ -6203,6 +6326,10 @@
                 "credit_note_detail_id" : {
                   "type" : "integer",
                   "description" : "Optional credit note detail id (used when this transaction is reversed)"
+                },
+                "unit_of_measure" : {
+                  "type" : "string",
+                  "description" : "Unit of measure used"
                 },
                 "id" : {
                   "type" : "integer",
@@ -6368,14 +6495,18 @@
               "type" : "integer",
               "description" : "Unique user identifier"
             },
+            "customer_id" : {
+              "type" : "integer",
+              "description" : "Optional customer id linked to this user"
+            },
+            "vehicle_id" : {
+              "type" : "integer",
+              "description" : "Used to assign one specific vehicle to this user. When this is set, the user can use only this vehicle in Invoice&GO"
+            },
             "email" : {
               "type" : "string",
               "description" : "Login email",
               "format" : "email"
-            },
-            "card_id" : {
-              "type" : "integer",
-              "description" : "Used to assign one specific vehicle to this user. When this is set, the user can use only this vehicle in Invoice&GO"
             },
             "internal_properties" : {
               "type" : "object",
@@ -6739,326 +6870,6 @@
           }
         },
         "description" : "Customer output data"
-      },
-      "customerInputArray" : {
-        "title" : "customer_input_array",
-        "type" : "array",
-        "description" : "Customer data array",
-        "items" : {
-          "type" : "object",
-          "properties" : {
-            "invoice_notes" : {
-              "type" : "string",
-              "description" : "Invoice custom notes"
-            },
-            "country" : {
-              "type" : "string",
-              "description" : "Company country name"
-            },
-            "notes" : {
-              "type" : "string",
-              "description" : "Optional notes"
-            },
-            "vat_number" : {
-              "maxLength" : 20,
-              "type" : "string",
-              "description" : "Company vat number"
-            },
-            "notify_recharge" : {
-              "type" : "boolean",
-              "description" : "True if the system sends an email to the customer to notify a recharge operation, false otherwise"
-            },
-            "fee" : {
-              "type" : "boolean",
-              "description" : "ECommerce customer fee"
-            },
-            "discount_level" : {
-              "type" : "integer",
-              "description" : "Customer discount level"
-            },
-            "house_number" : {
-              "type" : "string",
-              "description" : "Company house number"
-            },
-            "max_period_credit" : {
-              "type" : "number",
-              "description" : "Max credit"
-            },
-            "charge_discount" : {
-              "type" : "number",
-              "description" : "Discount amount for recharging operations"
-            },
-            "zip_code" : {
-              "maxLength" : 6,
-              "minLength" : 4,
-              "type" : "integer",
-              "description" : "Company headquarter zip code"
-            },
-            "pec" : {
-              "maxLength" : 100,
-              "type" : "string",
-              "description" : "Company pec",
-              "format" : "email"
-            },
-            "province" : {
-              "maxLength" : 2,
-              "type" : "string",
-              "description" : "Province code"
-            },
-            "has_driver_request" : {
-              "type" : "boolean",
-              "description" : "True if the customer has to type the driver code when performing a transaction, false otherwise"
-            },
-            "ignore_payment_mode_on_pos" : {
-              "type" : "boolean",
-              "description" : "If true ignores customer payment mode for POS recharges"
-            },
-            "vat_id" : {
-              "type" : "integer",
-              "description" : "Customer vat"
-            },
-            "oil_iban" : {
-              "type" : "string",
-              "description" : "If not empty, oil invoices uses this iban if needed"
-            },
-            "id" : {
-              "type" : "integer",
-              "description" : "Unique customer identifier"
-            },
-            "has_driver_check" : {
-              "type" : "boolean",
-              "description" : "True if the system check the driver code (it has to be an authorizative PIN), false otherwise"
-            },
-            "app_can_see_balance" : {
-              "type" : "boolean",
-              "description" : "True if in the Selfnet mobile app user can see the customer credit, false otherwise"
-            },
-            "merge_invoices" : {
-              "type" : "boolean",
-              "description" : "If True, OIL and NON OIL invoices are merged (where possible), false otherwise"
-            },
-            "is_without_vat" : {
-              "type" : "boolean",
-              "description" : "If True, the customer has no VAT number"
-            },
-            "fax_number" : {
-              "maxLength" : 50,
-              "type" : "string",
-              "description" : "Company fax number"
-            },
-            "internal_properties" : {
-              "type" : "object",
-              "properties" : {
-                "card_type_id" : {
-                  "type" : "integer",
-                  "description" : "Only for Selfnet GT cards customers, shows the owner circuit.<br/>Possible valuesa are: <ul><li> 9 DKV</li><li>10 UTA</li><li>13 EWG</li><li>39 FAI</li><li>42 EDC (RADIUS)</li></ul>"
-                },
-                "registration_date" : {
-                  "type" : "string",
-                  "description" : "Customer's registration date in the system",
-                  "format" : "date-time"
-                },
-                "parent_id" : {
-                  "type" : "integer",
-                  "description" : "Parent client ID reverse change management"
-                },
-                "associated_supplier_id" : {
-                  "type" : "integer",
-                  "description" : "For multisupplier, linked supplier"
-                },
-                "is_external_customer" : {
-                  "type" : "boolean",
-                  "description" : "True if the customer is created by API called by third parties. Only used in GET endpoints"
-                },
-                "is_exported" : {
-                  "type" : "boolean",
-                  "description" : "True if the customer is created and still never exported, false otherwise"
-                },
-                "type" : {
-                  "type" : "string",
-                  "description" : "Customer type -> 'S': Society, 'P': Private"
-                }
-              }
-            },
-            "residue_type" : {
-              "type" : "integer",
-              "description" : "Shows on the receipt card or customer residue"
-            },
-            "stamp_duty" : {
-              "type" : "boolean",
-              "description" : "If true invoices have stamp duty when numbers permits it"
-            },
-            "exposure" : {
-              "type" : "number",
-              "description" : "Issued invoices still not payed"
-            },
-            "name" : {
-              "maxLength" : 81,
-              "type" : "string",
-              "description" : "Company complete name"
-            },
-            "sdi_code" : {
-              "maxLength" : 7,
-              "minLength" : 6,
-              "type" : "string",
-              "description" : "SDI code used to receive electronic invoices"
-            },
-            "phone_number" : {
-              "maxLength" : 50,
-              "type" : "string",
-              "description" : "Company phone number"
-            },
-            "supplier_id" : {
-              "type" : "integer",
-              "description" : "Supplier owner of customer data (not set for I&GO customers)"
-            },
-            "discount_group_id" : {
-              "type" : "integer",
-              "description" : "Discount group identifier"
-            },
-            "country_id" : {
-              "type" : "integer",
-              "description" : "Company country id"
-            },
-            "non_oil_iban" : {
-              "type" : "string",
-              "description" : "If not empty, non oil invoices uses this iban if needed"
-            },
-            "birthday" : {
-              "type" : "string",
-              "description" : "Customer birthday date",
-              "format" : "date-time"
-            },
-            "notify_2" : {
-              "type" : "boolean",
-              "description" : "True if the system sends an email to secondary customer email address, false otherwise.<br/>If the field notify (or the field notify_recharge) is set to False, this value is ignored."
-            },
-            "code" : {
-              "maxLength" : 6,
-              "minLength" : 4,
-              "type" : "string",
-              "description" : "Company code"
-            },
-            "notify_3" : {
-              "type" : "boolean",
-              "description" : "True if the system sends an email to third customer email address, false otherwise.<br/>If the field notify (or the field notify_recharge) is set to False, this value is ignored."
-            },
-            "gender" : {
-              "type" : "string",
-              "description" : "Customer gender"
-            },
-            "has_customer_recharge" : {
-              "type" : "boolean",
-              "description" : "True if the recharge operations increase the customer credit,False if they increase the credit of the single involved card."
-            },
-            "city" : {
-              "maxLength" : 30,
-              "type" : "string",
-              "description" : "Company headquarter city"
-            },
-            "notify_1" : {
-              "type" : "boolean",
-              "description" : "True if the system sends an email to main customer email address, false otherwise.<br/>If the field notify (or the field notify_recharge) is set to False, this value is ignored."
-            },
-            "adm_code" : {
-              "maxLength" : 7,
-              "minLength" : 6,
-              "type" : "string",
-              "description" : "Company sdi passive code"
-            },
-            "fiscal_code" : {
-              "maxLength" : 20,
-              "type" : "string",
-              "description" : "Company fiscal code"
-            },
-            "nexi_configuration" : {
-              "type" : "string",
-              "description" : "ECommerce configuration"
-            },
-            "notify" : {
-              "type" : "boolean",
-              "description" : "True if the system sends an email to the customer to notify his operations, false otherwise"
-            },
-            "article_id" : {
-              "type" : "integer",
-              "description" : "Article id to add costs to the customer invoice"
-            },
-            "is_enabled" : {
-              "type" : "boolean",
-              "description" : "True if customer is active, false otherwise"
-            },
-            "has_account_balance" : {
-              "type" : "boolean",
-              "description" : "True if the system generates the account balance for this customer, false otherwise"
-            },
-            "enabled_vehicles" : {
-              "type" : "array",
-              "description" : "Enabled vehicles ids, lookup for vehicle details using /vehicles/{id} endpoint",
-              "items" : {
-                "type" : "integer"
-              }
-            },
-            "electronic_invoice" : {
-              "type" : "boolean",
-              "description" : "True if the customer use the ICAD Sistemi electronic invoice"
-            },
-            "start_invoice_date" : {
-              "type" : "string",
-              "description" : "For Selfnet customer, represents the electronic invoice starting dateIf NULL, invoices start when the field electronic_invoice is activated",
-              "format" : "date"
-            },
-            "payment_terms_id" : {
-              "type" : "integer",
-              "description" : "Payment terms identifier. It is used only for Selfnet customers<br/> Possible values are:<ul><li>2\t5 gg data fattura</li><li>3\t15 gg data fattura</li><li>4\t30 gg fine mese data fattura</li><li>5\t60 gg fine mese data fattura</li><li>6\t90 gg fine mese data fattura</li><li>22\tData Fattura</li><li>23\t25 gg data fattura</li><li>26\t30 gg data fattura</li><li>27\t45 gg data fattura</li><li>28\t35 gg data fattura</li><li>29\t40 gg data fattura</li><li>30\t60 gg fine mese + 12gg</li><li>31\t30 gg fine mese + 12gg</li><li>32\t20 gg data fattura</li><li>33\t30 gg fine mese +  8gg</li><li>34\t60 gg fine mese + 10gg</li><li>35\t30 gg fine mese +  5gg</li><li>36\t30 gg fine mese + 10gg</li><li>37\t60 gg fine mese + 15gg</li><li>38\t10 gg data fattura</li><li>39\t30 gg fine mese + 15gg</li><li>40\t60 gg fine mese +  5gg</li><li>41\t60 gg data fattura</li><li>42\t90 gg fine mese + 10gg</li><li>43\t90 gg data fattura</li></ul>"
-            },
-            "email" : {
-              "maxLength" : 100,
-              "type" : "string",
-              "description" : "Company email",
-              "format" : "email"
-            },
-            "address" : {
-              "maxLength" : 81,
-              "type" : "string",
-              "description" : "Company address"
-            },
-            "payment_mode_id" : {
-              "type" : "string",
-              "description" : "Payment mode identifier.<br/>Possible values are:<ul><li><strong>MP01</strong>: Contanti</li><li><strong>MP02</strong>: Assegno</li><li><strong>MP03</strong>: assegno circolare</li><li><strong>MP04</strong>: contanti presso Tesoreria</li><li><strong>MP05</strong>: Bonifico</li><li><strong>MP06</strong>: vaglia cambiario</li><li><strong>MP07</strong>: bollettino bancario</li><li><strong>MP08</strong>: Carta di pagamento</li><li><strong>MP09</strong>: RID</li><li><strong>MP10</strong>: RID utenze</li><li><strong>MP11</strong>: RID veloce</li><li><strong>MP12</strong>: Ricevuta bancaria</li><li><strong>MP13</strong>: MAV</li><li><strong>MP14</strong>: quietanza erario stato</li><li><strong>MP15</strong>: giroconto su conti di contabilità speciale</li><li><strong>MP16</strong>: domiciliazione bancaria</li><li><strong>MP17</strong>: domiciliazione postale</li><li><strong>MP18</strong>: Bollettino di c/c postale</li><li><strong>MP19</strong>: SEPA Direct Debit</li><li><strong>MP20</strong>: SEPA Direct Debit CORE</li><li><strong>MP21</strong>: SEPA Direct Debit B2B</li><li><strong>MP22</strong>: Trattenuta su somme già riscosse</li><li><strong>MP23</strong>: PagoPA</li></ul>"
-            },
-            "has_km_request" : {
-              "type" : "boolean",
-              "description" : "True if the customer has to type the km value when performing a transaction, false otherwise"
-            },
-            "has_invoice" : {
-              "type" : "boolean",
-              "description" : "True if the customer needs to invoice his transactions, false otherwise"
-            },
-            "has_km_check" : {
-              "type" : "boolean",
-              "description" : "True if the system check the value of the field has_km_request, false otherwise"
-            },
-            "price_list_id" : {
-              "type" : "integer",
-              "description" : "Price list identifier linked to this customer"
-            },
-            "payment_periodicity_id" : {
-              "type" : "string",
-              "description" : "Payment periodicity identifier.<br/>Possible values are:<ul><li><strong>N</strong> Immediata (both for Invoice&GO and Selfnet customers)</li><li><strong>W</strong> Settimanale (only for Selfnet customers)</li><li><strong>D</strong> \tDecade (only for Selfnet customers)</li><li><strong>F</strong> \tQuindicinale (only for Selfnet customers)</li><li><strong>M</strong> \tMensile (both for Invoice&GO and Selfnet customers)</li><li><strong>B</strong> \tBimestrale (only for Selfnet customers)</li><li><strong>Q</strong> \tTrimestrale (only for Selfnet customers)</li><li><strong>X</strong> \tNessuna (only for Selfnet customers)</li></ul>"
-            },
-            "enabled_articles" : {
-              "type" : "array",
-              "description" : "Enabled articles ids, lookup for article details using /articles/{id} endpoint",
-              "items" : {
-                "type" : "integer"
-              }
-            },
-            "has_split_payment" : {
-              "type" : "boolean",
-              "description" : "True if the customer use the split payment, false otherwise"
-            }
-          }
-        }
       },
       "invoiceHeaderOutput" : {
         "title" : "invoice_header_output",
@@ -8257,6 +8068,10 @@
               "type" : "number",
               "description" : "Unit discount (or decrease)"
             },
+            "article_name" : {
+              "type" : "integer",
+              "description" : "Name of the purchased article"
+            },
             "supply_number" : {
               "type" : "integer",
               "description" : "Transaction number linked to the supply"
@@ -8268,6 +8083,10 @@
             "is_invoiced" : {
               "type" : "boolean",
               "description" : "True if the supply is invoiced, False if it hasn't to be invoice. NULL if it has to be processed."
+            },
+            "pump_number" : {
+              "type" : "string",
+              "description" : "Involved pump number."
             },
             "is_reversal" : {
               "type" : "boolean",
@@ -8475,10 +8294,6 @@
               "type" : "string",
               "description" : "Vehicle plate"
             },
-            "unit_of_measure_id" : {
-              "type" : "integer",
-              "description" : "Unit of measure used"
-            },
             "payments" : {
               "type" : "array",
               "items" : {
@@ -8538,6 +8353,10 @@
             "credit_note_detail_id" : {
               "type" : "integer",
               "description" : "Optional credit note detail id (used when this transaction is reversed)"
+            },
+            "unit_of_measure" : {
+              "type" : "string",
+              "description" : "Unit of measure used"
             },
             "invoice_id" : {
               "type" : "integer",
@@ -8667,14 +8486,14 @@
             "type" : "string",
             "description" : "Phone number"
           },
+          "vehicle_id" : {
+            "type" : "integer",
+            "description" : "Used to assign one specific vehicle to this user. When this is set, the user can use only this vehicle in Invoice&GO"
+          },
           "email" : {
             "type" : "string",
             "description" : "Login email",
             "format" : "email"
-          },
-          "card_id" : {
-            "type" : "integer",
-            "description" : "Used to assign one specific vehicle to this user. When this is set, the user can use only this vehicle in Invoice&GO"
           },
           "internal_properties" : {
             "type" : "object",
