@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Comment pull request with API diff
-        uses: icadsistemi/bump-sh-is-fork@v1
+        uses: icadsistemi/bump-action@v1
         with:
           doc: $BUMP_DOC_ID
           token: ${{secrets.BUMP_TOKEN}}
