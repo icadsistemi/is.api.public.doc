@@ -1,0 +1,22 @@
+name: API diff
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  api-doc-deploy:
+    name: Check API diff on Bump
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Comment pull request with API diff
+        uses: icadsistemi/bump-sh-is-fork@v1
+        with:
+          doc: ${{BUMP_DOC_ID}}
+          token: ${{secrets.BUMP_TOKEN}}
+          file: mxp-public-api-prod-oas30.json
+          command: diff
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
