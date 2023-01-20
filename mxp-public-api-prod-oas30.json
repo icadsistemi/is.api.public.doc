@@ -3,21 +3,13 @@
   "info": {
     "title": "Public API",
     "description": "ICAD Sistemi Public API documentation",
-    "version": "2023-01-03T15:52:34Z",
-    "contact": {
-      "name": "ICAD Sistemi",
-      "url": "icadsistemi.com",
-      "email": "info@icadsistemi.com"
-    }
+    "version": "1.0",
+    "contact": {}
   },
   "servers": [
     {
       "url": "https://mxp-public-api.prod.icadsistemi.com",
       "description": "Production"
-    },
-    {
-      "url": "https://mxp-public-api.dev.icadsistemi.com",
-      "description": "Development"
     }
   ],
   "paths": {
