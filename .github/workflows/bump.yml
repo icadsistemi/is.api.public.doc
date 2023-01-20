@@ -14,8 +14,8 @@ jobs:
       - name: Comment pull request with API diff
         uses: icadsistemi/bump-action@v1
         with:
-          doc: $BUMP_DOC_ID
-          token: ${{secrets.BUMP_TOKEN}}
+          doc: ${{ vars.BUMP_DOC_ID }}
+          token: ${{ secrets.BUMP_TOKEN }}
           file: mxp-public-api-prod-oas30.json
           command: diff
         env:
