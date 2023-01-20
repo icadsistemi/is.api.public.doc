@@ -19,4 +19,4 @@ jobs:
           file: mxp-public-api-prod-oas30.json
           command: diff
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
