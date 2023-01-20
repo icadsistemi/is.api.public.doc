@@ -1,4 +1,4 @@
-name: API diff
+name: API deploy
 
 on:
   release:
