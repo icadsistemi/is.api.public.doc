@@ -337,7 +337,6 @@
         ]
       }
     },
-    "/v1/invoiceheaders": {},
     "/v1/appliedPrices/{id}": {
       "get": {
         "parameters": [
@@ -729,7 +728,6 @@
         ]
       }
     },
-    "/v1/invoices/active/retrieve": {},
     "/v1/payments/periodicities": {
       "get": {
         "responses": {
@@ -767,62 +765,6 @@
         "security": [
           {
             "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/externals/fuelstations": {
-      "get": {
-        "parameters": [
-          {
-            "name": "source_app",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "supplier_id",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/fuelStationsOutputArray"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": [
-              "https://resource.api.icadsistemi.com/m2m"
-            ]
           }
         ]
       }
@@ -912,49 +854,6 @@
         ]
       }
     },
-    "/v1/externals/supplies/nonoil": {
-      "post": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/manualSupplyInput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "201 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": [
-              "https://resource.api.icadsistemi.com/m2m"
-            ]
-          }
-        ]
-      }
-    },
     "/v1/invoices/passive": {
       "get": {
         "responses": {
@@ -1034,10 +933,6 @@
           }
         ]
       }
-    },
-    "/v1/mobilepayments": {},
-    "/": {
-      "x-amazon-apigateway-any-method": {}
     },
     "/v1/customers": {
       "post": {
@@ -1172,9 +1067,6 @@
         ]
       }
     },
-    "/v1/invoices/active/automatic": {},
-    "/v1/residues": {},
-    "/v1/fuelcoupons/{id}/unlock": {},
     "/v1/users/confirm/resend": {
       "post": {
         "requestBody": {
@@ -1316,7 +1208,6 @@
         ]
       }
     },
-    "/v1/mobilepayments/transactions": {},
     "/v1/fuelcoupons/{id}/unlock/history": {
       "get": {
         "parameters": [
@@ -1602,7 +1493,6 @@
         ]
       }
     },
-    "/v1/externals/supplies": {},
     "/v1/users/me": {
       "get": {
         "responses": {
@@ -1644,7 +1534,6 @@
         ]
       }
     },
-    "/v1/externals/residues": {},
     "/v1/invoices/active/{id}/details/restore": {
       "post": {
         "parameters": [
@@ -1682,49 +1571,6 @@
         "security": [
           {
             "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/externals/supplies/oil": {
-      "post": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/manualSupplyInput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "201 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": [
-              "https://resource.api.icadsistemi.com/m2m"
-            ]
           }
         ]
       }
@@ -1988,71 +1834,6 @@
         "security": [
           {
             "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/externals/residues/cards": {
-      "get": {
-        "parameters": [
-          {
-            "name": "type_id",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "card_id",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "supplier_id",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/residueCardsOutput"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": [
-              "https://resource.api.icadsistemi.com/m2m"
-            ]
           }
         ]
       }
@@ -3409,148 +3190,6 @@
         ]
       }
     },
-    "/v1/selfnet": {},
-    "/v1/externals/residues/fuelcoupons": {
-      "get": {
-        "parameters": [
-          {
-            "name": "fuelcoupon_id",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "supplier_id",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/residueFuelCouponsOutput"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": [
-              "https://resource.api.icadsistemi.com/m2m"
-            ]
-          }
-        ]
-      }
-    },
-    "/v1/externals/articles/search": {
-      "get": {
-        "parameters": [
-          {
-            "name": "category_id",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "customer_id",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "fuel_station_id",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "supplier_id",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "card_id",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "vehicle_id",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/articleOutputArray"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": [
-              "https://resource.api.icadsistemi.com/m2m"
-            ]
-          }
-        ]
-      }
-    },
-    "/v1/mobilepayments/fuelstations/{id}": {},
     "/v1/protocols": {
       "post": {
         "requestBody": {
@@ -4060,7 +3699,6 @@
         ]
       }
     },
-    "/v1/invoices/download": {},
     "/v1/users/enable": {
       "post": {
         "requestBody": {
@@ -4102,7 +3740,6 @@
         ]
       }
     },
-    "/v1/payments": {},
     "/v1/articles": {
       "post": {
         "requestBody": {
@@ -4185,7 +3822,6 @@
         ]
       }
     },
-    "/v1/invoices/active/creditnote": {},
     "/v1/vehicles/{id}": {
       "get": {
         "parameters": [
@@ -4666,7 +4302,6 @@
         ]
       }
     },
-    "/v1/externals": {},
     "/v1/residues/log": {
       "get": {
         "parameters": [
@@ -4789,64 +4424,6 @@
         ]
       }
     },
-    "/v1/invoices/active/{id}/send": {},
-    "/v1/externals/residues/customers": {
-      "get": {
-        "parameters": [
-          {
-            "name": "customer_id",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "supplier_id",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/residueCustomersOutput"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": [
-              "https://resource.api.icadsistemi.com/m2m"
-            ]
-          }
-        ]
-      }
-    },
     "/v1/supplies/search": {
       "get": {
         "parameters": [
@@ -4922,7 +4499,6 @@
         ]
       }
     },
-    "/v1/supplies": {},
     "/v1/mobilepayments/fuelstations/{id}/map": {
       "get": {
         "parameters": [
@@ -4970,8 +4546,6 @@
         ]
       }
     },
-    "/v1/users/confirm": {},
-    "/v1/users/customer": {},
     "/v1/transactions/search": {
       "get": {
         "parameters": [
@@ -5278,8 +4852,6 @@
         ]
       }
     },
-    "/v1/invoices/active/{id}/sendtoday": {},
-    "/v1/fuelstations/{id}/prices": {},
     "/v1/users": {
       "put": {
         "requestBody": {
@@ -5360,7 +4932,6 @@
         ]
       }
     },
-    "/v1/fuelcoupons/{id}": {},
     "/v1/categories/{id}": {
       "get": {
         "parameters": [
