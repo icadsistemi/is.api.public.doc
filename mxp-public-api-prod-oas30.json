@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "mxp-public-api",
-    "description": "ICAD Sistemi Public API",
+    "title": "Public API",
+    "description": "ICAD Sistemi Public API documentation",
     "version": "2023-01-03T15:52:34Z",
     "contact": {
       "name": "ICAD Sistemi",
