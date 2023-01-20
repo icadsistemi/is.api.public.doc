@@ -12,7 +12,12 @@
   },
   "servers": [
     {
-      "url": "https://mxp-public-api.prod.icadsistemi.com"
+      "url": "https://mxp-public-api.prod.icadsistemi.com",
+      "description": "Production"
+    },
+    {
+      "url": "https://mxp-public-api.dev.icadsistemi.com",
+      "description": "Development"
     }
   ],
   "paths": {
@@ -22,10 +27,10 @@
           {
             "name": "fuelcoupon_id",
             "in": "query",
-            "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "required": true
           },
           {
             "name": "supplier_id",
@@ -257,9 +262,6 @@
         ]
       }
     },
-    "/v1/suppliers/{id}/customers": {},
-    "/v1/fuelcoupons": {},
-    "/v1/invoices/{id}": {},
     "/v1/cards/range": {
       "post": {
         "requestBody": {
@@ -11445,19 +11447,6 @@
         }
       }
     }
-  },
-  "x-amazon-apigateway-policy": {
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-        "Effect": "Allow",
-        "Principal": {
-          "AWS": "*"
-        },
-        "Action": "execute-api:Invoke",
-        "Resource": "arn:aws:execute-api:eu-south-1:627189852820:lnyyduzqf8/*/*/*"
-      }
-    ]
   },
   "x-internal": false
 }
