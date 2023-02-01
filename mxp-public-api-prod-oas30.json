@@ -5444,6 +5444,34 @@
           }
         ]
       }
+    },
+    "/v1/supplies/search/qr": {
+      "post": {
+        "summary": "",
+        "operationId": "post-v1-supplies-search-qr",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/supplyOutputArray"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/getTransactionDetailByQrInput"
+              }
+            }
+          },
+          "description": ""
+        }
+      }
     }
   },
   "components": {
@@ -10817,6 +10845,25 @@
           }
         },
         "description": "User privacy data settings"
+      },
+      "getTransactionDetailByQrInput": {
+        "title": "getTransactionDetailByQrInput",
+        "x-stoplight": {
+          "id": "ulo6pmjc14vxi"
+        },
+        "type": "object",
+        "properties": {
+          "fuelstation_id": {
+            "type": "integer",
+            "description": "Fuel station ID, it could be empty\n"
+          },
+          "payload": {
+            "type": "string"
+          },
+          "automation": {
+            "type": "string"
+          }
+        }
       }
     },
     "securitySchemes": {
