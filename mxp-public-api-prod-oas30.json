@@ -255,39 +255,6 @@
         ]
       }
     },
-    "/v1/users/{id}/promote": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "id",
-          "in": "path",
-          "required": true
-        }
-      ],
-      "post": {
-        "summary": "",
-        "operationId": "post-v1-users-id-promote",
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "422": {
-            "description": "Unprocessable Entity (WebDAV)"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
     "/v1/cards/range": {
       "post": {
         "requestBody": {
@@ -5505,6 +5472,39 @@
           "description": ""
         }
       }
+    },
+    "/v1/users/promote": {
+      "parameters": [],
+      "post": {
+        "summary": "",
+        "operationId": "",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/userPromoteInput"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -5567,6 +5567,26 @@
           }
         },
         "description": "User enable input"
+      },
+      "userPromoteInput": {
+        "title": "user_enable_input",
+        "type": "object",
+        "description": "User promote input",
+        "x-stoplight": {
+          "id": "d351f7f2728cc"
+        },
+        "properties": {
+          "sourceApp": {
+            "type": "string",
+            "description": "optional source app of the request",
+            "format": "selfnet"
+          },
+          "email": {
+            "type": "string",
+            "description": "email address of to user to promote",
+            "format": "email"
+          }
+        }
       },
       "fuelcouponUnlockHistoryOutputArray": {
         "title": "fuelcoupon_unlock_history_output_array",
