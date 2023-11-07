@@ -3,7 +3,7 @@
   "info": {
     "title": "Public API",
     "description": "ICAD Sistemi Public API documentation",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "contact": {}
   },
   "servers": [
@@ -5477,7 +5477,6 @@
       "parameters": [],
       "post": {
         "summary": "",
-        "operationId": "",
         "responses": {
           "204": {
             "description": "No Content"
