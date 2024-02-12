@@ -3,7 +3,7 @@
   "info": {
     "title": "Public API",
     "description": "ICAD Sistemi Public API documentation",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "contact": {}
   },
   "servers": [
@@ -3832,6 +3832,14 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "article_id",
+            "description": "The article id used to filter vehicles of this customer"
           }
         ],
         "responses": {
