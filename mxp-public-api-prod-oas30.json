@@ -3,7 +3,7 @@
   "info": {
     "title": "Public API",
     "description": "ICAD Sistemi Public API documentation",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "contact": {}
   },
   "servers": [
@@ -13,112 +13,13 @@
     }
   ],
   "paths": {
-    "/v1/residues/fuelcoupons": {
-      "get": {
-        "parameters": [
-          {
-            "name": "fuelcoupon_id",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          },
-          {
-            "name": "supplier_id",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/residueFuelCouponsOutput"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ],
-        "operationId": "",
-        "description": "Get fuel coupons residues"
-      }
-    },
-    "/v1/payments/terms": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/paymentTermsOutputArray"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "404": {
-            "description": "404 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ],
-        "description": "Get user payment terms"
-      }
-    },
-    "/v1/categories": {
+    "/v1/appliedPrices": {
       "post": {
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/categoryInput"
+                "$ref": "#/components/schemas/appliedPriceInput"
               }
             }
           },
@@ -127,190 +28,6 @@
         "responses": {
           "201": {
             "description": "201 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/customers/{id}/intents": {
-      "get": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/customerOutput"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "404": {
-            "description": "404 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/users/{id}/vehicles": {
-      "get": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/vehicleOutputArray"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "404": {
-            "description": "404 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/cards/range": {
-      "post": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/cardRangeInput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "201 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/customers/intents": {
-      "put": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/customerOutput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "204": {
-            "description": "204 response",
             "content": {}
           },
           "400": {
@@ -480,467 +197,13 @@
         ]
       }
     },
-    "/v1/payments/modes": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/paymentModeOutputArray"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "404": {
-            "description": "404 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/suppliers/{id}": {
-      "get": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/supplierOutput"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "404": {
-            "description": "404 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ],
-        "summary": ""
-      },
-      "put": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/supplierInput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/residues/customers": {
-      "get": {
-        "parameters": [
-          {
-            "name": "customer_id",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "supplier_id",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/residueCustomersOutput"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/invoices/active/{id}/details": {
-      "get": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/invoiceBodyOutputArray"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "404": {
-            "description": "404 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/payments/periodicities": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/paymentPeriodicityOutputArray"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "404": {
-            "description": "404 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/users/terms": {
-      "get": {
-        "parameters": [
-          {
-            "name": "service",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/userPrivacy"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      },
-      "put": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/userPrivacy"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/invoices/passive": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/passiveInvoiceHeaderOutputArray"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "404": {
-            "description": "404 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      },
-      "put": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/passiveInvoiceHeaderInput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/customers": {
+    "/v1/articles": {
       "post": {
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/customerInput"
+                "$ref": "#/components/schemas/articleInput"
               }
             }
           },
@@ -961,1053 +224,6 @@
           },
           "403": {
             "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/cards/lock": {
-      "post": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/cardLockInput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "201 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/suppliers/{id}/categories": {
-      "get": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/categoryOutputArray"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "404": {
-            "description": "404 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/users/confirm/resend": {
-      "post": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/userEnableInput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "201 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/suppliers/{id}/invoiceheaders": {
-      "get": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/invoiceHeaderOutput"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "404": {
-            "description": "404 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      },
-      "post": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/invoiceHeaderInput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "201 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/fuelcoupons/{id}/unlock/history": {
-      "get": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/fuelcouponUnlockHistoryOutputArray"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "404": {
-            "description": "404 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/customers/qr/email": {
-      "post": {
-        "responses": {
-          "202": {
-            "description": "202 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/invoices/{id}/print": {
-      "get": {
-        "parameters": [
-          {
-            "name": "type",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "output",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "preview",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/base64String"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/customers/{id}/qr": {
-      "get": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/customerOutput"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "404": {
-            "description": "404 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/articles/search": {
-      "get": {
-        "parameters": [
-          {
-            "name": "category_id",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "customer_id",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "fuel_station_id",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "supplier_id",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "card_id",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "vehicle_id",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/articleOutputArray"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/users/me": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/userOutput"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "404": {
-            "description": "404 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/invoices/active/{id}/details/restore": {
-      "post": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "202 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/fuelstations/{id}": {
-      "get": {
-        "parameters": [
-          {
-            "name": "isQr",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/fuelStationOutput"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      },
-      "put": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/fuelStationInput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/fuelstations": {
-      "get": {
-        "parameters": [
-          {
-            "name": "source_app",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "supplier_id",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/fuelStationsOutputArray"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      },
-      "post": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/fuelStationInput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "201 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/fuelstations/search": {
-      "get": {
-        "parameters": [
-          {
-            "name": "longitude",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "articles",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "latitude",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "service",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/fuelStationOutputArray"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/customers/{id}": {
-      "get": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/customerOutput"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "404": {
-            "description": "404 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      },
-      "put": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/customerInput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      },
-      "delete": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "422": {
-            "description": "422 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/selfnet/home": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/userOutput"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "404": {
-            "description": "404 response",
             "content": {}
           },
           "500": {
@@ -2165,6 +381,128 @@
         ]
       }
     },
+    "/v1/articles/search": {
+      "get": {
+        "parameters": [
+          {
+            "name": "category_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "customer_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fuel_station_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "supplier_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "card_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "vehicle_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/articleOutputArray"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/cards": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/cardInputArray"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "201 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
     "/v1/cards/{id}": {
       "get": {
         "parameters": [
@@ -2308,15 +646,655 @@
         ]
       }
     },
-    "/v1/productfamilies": {
+    "/v1/cards/{id}/unlock/history": {
       "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "200 response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/productFamilyOutputArray"
+                  "$ref": "#/components/schemas/cardUnlockHistoryOutput"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "404": {
+            "description": "404 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/cards/lock": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/cardLockInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "201 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/cards/range": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/cardRangeInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "201 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/cards/pin/online": {
+      "parameters": [],
+      "get": {
+        "summary": "",
+        "operationId": "get-v1-cards-pin-seeds---copy",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "cards": {
+                      "type": "array",
+                      "x-stoplight": {
+                        "id": "axye68tute9ll"
+                      },
+                      "items": {
+                        "x-stoplight": {
+                          "id": "u9lx7f0lg5m9s"
+                        },
+                        "type": "object",
+                        "properties": {
+                          "pan": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "pvwqvv01c1fbd"
+                            }
+                          }
+                        },
+                        "required": [
+                          "pan"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "cards"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Endpoint used to retrieve the list of the card linked to the logged user with the online dynamic pin enabled."
+      },
+      "post": {
+        "summary": "",
+        "operationId": "post-v1-cards-pin-online",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pin": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "o5ankg8ths3mn"
+                      },
+                      "description": "Temporary pin"
+                    }
+                  },
+                  "required": [
+                    "pin"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Endpoint used to get the online temporary pin ",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "card_pan": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "64f6puiv8zh3z"
+                    },
+                    "description": "Pan of the card requesting the pin"
+                  }
+                },
+                "required": [
+                  "card_pan"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/cards/pin/seeds": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "replace": {
+                    "type": "boolean",
+                    "x-stoplight": {
+                      "id": "bsh2rbfv9b6pb"
+                    },
+                    "description": "Always set to False."
+                  }
+                },
+                "required": [
+                  "replace"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "cards": {
+                      "type": "array",
+                      "x-stoplight": {
+                        "id": "3zgo8myq18shh"
+                      },
+                      "items": {
+                        "x-stoplight": {
+                          "id": "d30wl9otubshm"
+                        },
+                        "type": "object",
+                        "properties": {
+                          "totp_seed": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "10lntw48bel5e"
+                            },
+                            "description": "Seed to be used for the paired pan"
+                          },
+                          "pan": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "5cy29qy0kfsfs"
+                            },
+                            "description": "Pan of the card"
+                          }
+                        },
+                        "required": [
+                          "totp_seed",
+                          "pan"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "cards"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ],
+        "description": "Endpoint used to retrieve the list of the card linked to the logged user with the offline dynamic pin enabled."
+      },
+      "parameters": []
+    },
+    "/v1/cards/unlock": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/cardUnLockInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "201 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/categories": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/categoryInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "201 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/circuits": {
+      "get": {
+        "parameters": [
+          {
+            "name": "supplier_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/circuitOutputArray"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      },
+      "patch": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/circuitOutputArray"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/customers": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/customerInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "201 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/customers/intents": {
+      "put": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/customerOutput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/customers/{id}/intents": {
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customerOutput"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "404": {
+            "description": "404 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/customers/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customerOutput"
                 }
               }
             }
@@ -2348,20 +1326,200 @@
           }
         ]
       },
-      "post": {
+      "put": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/productFamilyInput"
+                "$ref": "#/components/schemas/customerInput"
               }
             }
           },
           "required": true
         },
         "responses": {
-          "201": {
-            "description": "201 response",
+          "204": {
+            "description": "204 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      },
+      "delete": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "422": {
+            "description": "422 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/customers/{id}/qr": {
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customerOutput"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "404": {
+            "description": "404 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/customers/intents/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "422": {
+            "description": "422 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/customers/qr/email": {
+      "post": {
+        "responses": {
+          "202": {
+            "description": "202 response",
             "content": {}
           },
           "400": {
@@ -2459,6 +1617,253 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/fuelcoupons/{id}/unlock/history": {
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/fuelcouponUnlockHistoryOutputArray"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "404": {
+            "description": "404 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/fuelstations": {
+      "get": {
+        "parameters": [
+          {
+            "name": "source_app",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "supplier_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/fuelStationsOutputArray"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      },
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/fuelStationInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "201 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/fuelstations/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "isQr",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/fuelStationOutput"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      },
+      "put": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/fuelStationInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "content": {}
           },
           "400": {
             "description": "400 response",
@@ -2584,63 +1989,26 @@
         ]
       }
     },
-    "/v1/users/customer/{id}": {
-      "post": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/userOutput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "201 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/circuits": {
+    "/v1/fuelstations/{id}/prices/applied": {
       "get": {
         "parameters": [
           {
-            "name": "supplier_id",
+            "name": "article_id",
             "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "price_level_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
             "required": true,
             "schema": {
               "type": "string"
@@ -2653,7 +2021,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/circuitOutputArray"
+                  "$ref": "#/components/schemas/appliedPriceOutputArray"
                 }
               }
             }
@@ -2680,54 +2048,35 @@
             "cognito": []
           }
         ]
-      },
-      "patch": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/circuitOutputArray"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
       }
     },
-    "/v1/versions": {
+    "/v1/fuelstations/search": {
       "get": {
         "parameters": [
           {
-            "name": "application",
+            "name": "longitude",
             "in": "query",
-            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "articles",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "latitude",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "service",
+            "in": "query",
             "schema": {
               "type": "string"
             }
@@ -2739,7 +2088,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/version"
+                  "$ref": "#/components/schemas/fuelStationOutputArray"
                 }
               }
             }
@@ -2754,46 +2103,6 @@
           },
           "403": {
             "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        }
-      }
-    },
-    "/v1/customers/intents/{id}": {
-      "delete": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "422": {
-            "description": "422 response",
             "content": {}
           },
           "500": {
@@ -2892,8 +2201,8 @@
         ]
       }
     },
-    "/v1/cards/{id}/unlock/history": {
-      "get": {
+    "/v1/invoices/active/{id}/details/restore": {
+      "post": {
         "parameters": [
           {
             "name": "id",
@@ -2905,69 +2214,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cardUnlockHistoryOutput"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "404": {
-            "description": "404 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/users/{id}": {
-      "put": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/userInput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "204": {
-            "description": "204 response",
+          "202": {
+            "description": "202 response",
             "content": {}
           },
           "400": {
@@ -2980,49 +2228,6 @@
           },
           "403": {
             "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      },
-      "delete": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "422": {
-            "description": "422 response",
             "content": {}
           },
           "500": {
@@ -3190,6 +2395,583 @@
         ]
       }
     },
+    "/v1/invoices/active/{id}/details": {
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/invoiceBodyOutputArray"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "404": {
+            "description": "404 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/invoices/active/search": {
+      "get": {
+        "parameters": [
+          {
+            "name": "start",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "supplierId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "customerId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/activeInvoiceHeaderOutputArray"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/invoices/{id}/print": {
+      "get": {
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "output",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "preview",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/base64String"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/payments/modes": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/paymentModeOutputArray"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "404": {
+            "description": "404 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/invoices/passive": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/passiveInvoiceHeaderOutputArray"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "404": {
+            "description": "404 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      },
+      "put": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/passiveInvoiceHeaderInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/mobilepayments/transactions/enable": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/enableFuelingOutput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "201 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/mobilepayments/fuelstations/{id}/pump": {
+      "get": {
+        "parameters": [
+          {
+            "name": "pump_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/fuelStationMapOutput"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/payments/periodicities": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/paymentPeriodicityOutputArray"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "404": {
+            "description": "404 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/payments/terms": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/paymentTermsOutputArray"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "404": {
+            "description": "404 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ],
+        "description": "Get user payment terms"
+      }
+    },
+    "/v1/productfamilies": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/productFamilyOutputArray"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "404": {
+            "description": "404 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      },
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/productFamilyInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "201 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
     "/v1/protocols": {
       "post": {
         "requestBody": {
@@ -3325,22 +3107,44 @@
         ]
       }
     },
-    "/v1/supplies/nonoil": {
-      "post": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/manualSupplyInput"
-              }
+    "/v1/residues/cards": {
+      "get": {
+        "parameters": [
+          {
+            "name": "type_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           },
-          "required": true
-        },
+          {
+            "name": "card_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "supplier_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
-          "201": {
-            "description": "201 response",
-            "content": {}
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/residueCardsOutput"
+                }
+              }
+            }
           },
           "400": {
             "description": "400 response",
@@ -3366,22 +3170,36 @@
         ]
       }
     },
-    "/v1/supplies/oil": {
-      "post": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/manualSupplyInput"
-              }
+    "/v1/residues/customers": {
+      "get": {
+        "parameters": [
+          {
+            "name": "customer_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           },
-          "required": true
-        },
+          {
+            "name": "supplier_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
-          "201": {
-            "description": "201 response",
-            "content": {}
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/residueCustomersOutput"
+                }
+              }
+            }
           },
           "400": {
             "description": "400 response",
@@ -3393,6 +3211,167 @@
           },
           "403": {
             "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/residues/fuelcoupons": {
+      "get": {
+        "parameters": [
+          {
+            "name": "fuelcoupon_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "supplier_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/residueFuelCouponsOutput"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ],
+        "operationId": "",
+        "description": "Get fuel coupons residues"
+      }
+    },
+    "/v1/residues/log": {
+      "get": {
+        "parameters": [
+          {
+            "name": "start",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "supplier_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/residueLogOutputArray"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/selfnet/home": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userOutput"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "404": {
+            "description": "404 response",
             "content": {}
           },
           "500": {
@@ -3487,17 +3466,9 @@
         ]
       }
     },
-    "/v1/mobilepayments/fuelstations/{id}/pump": {
+    "/v1/suppliers/{id}/categories": {
       "get": {
         "parameters": [
-          {
-            "name": "pump_id",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "name": "id",
             "in": "path",
@@ -3513,10 +3484,377 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/fuelStationMapOutput"
+                  "$ref": "#/components/schemas/categoryOutputArray"
                 }
               }
             }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "404": {
+            "description": "404 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/suppliers/{id}/invoiceheaders": {
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/invoiceHeaderOutput"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "404": {
+            "description": "404 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/invoiceHeaderInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "201 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/suppliers/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/supplierOutput"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "404": {
+            "description": "404 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ],
+        "summary": ""
+      },
+      "put": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/supplierInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/supplies/nonoil": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/manualSupplyInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "201 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/supplies/oil": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/manualSupplyInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "201 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/transactions": {
+      "put": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/transactionPaymentOutput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      },
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/transactionPaymentOutput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "201 response",
+            "content": {}
           },
           "400": {
             "description": "400 response",
@@ -3583,56 +3921,22 @@
         ]
       }
     },
-    "/v1/invoices/active/search": {
-      "get": {
-        "parameters": [
-          {
-            "name": "start",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "supplierId",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "status",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "end",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "customerId",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/activeInvoiceHeaderOutputArray"
-                }
+    "/v1/users/confirm/resend": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/userEnableInput"
               }
             }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "201 response",
+            "content": {}
           },
           "400": {
             "description": "400 response",
@@ -3658,13 +3962,23 @@
         ]
       }
     },
-    "/v1/appliedPrices": {
+    "/v1/users/customer/{id}": {
       "post": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/appliedPriceInput"
+                "$ref": "#/components/schemas/userOutput"
               }
             }
           },
@@ -3740,47 +4054,6 @@
         ]
       }
     },
-    "/v1/articles": {
-      "post": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/articleInput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "201 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
     "/v1/users/search": {
       "get": {
         "responses": {
@@ -3808,6 +4081,350 @@
           },
           "404": {
             "description": "404 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/users/me": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userOutput"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "404": {
+            "description": "404 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/users/{id}": {
+      "put": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/userInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      },
+      "delete": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "422": {
+            "description": "422 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/users/{id}/vehicles": {
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/vehicleOutputArray"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "404": {
+            "description": "404 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/users/promote": {
+      "parameters": [],
+      "post": {
+        "summary": "",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/userPromoteInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/terms": {
+      "get": {
+        "parameters": [
+          {
+            "name": "service",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userPrivacy"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      },
+      "put": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/userPrivacy"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/vehicles": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/vehicleInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "201 response",
+            "content": {}
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
             "content": {}
           },
           "500": {
@@ -3973,229 +4590,6 @@
         ]
       }
     },
-    "/v1/mobilepayments/transactions/enable": {
-      "post": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/enableFuelingOutput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "201 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/transactions": {
-      "put": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/transactionPaymentOutput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "204": {
-            "description": "204 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      },
-      "post": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/transactionPaymentOutput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "201 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/cards": {
-      "post": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/cardInputArray"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "201 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/fuelstations/{id}/prices/applied": {
-      "get": {
-        "parameters": [
-          {
-            "name": "article_id",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "price_level_id",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/appliedPriceOutputArray"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
     "/v1/vehicles/{id}/qr": {
       "get": {
         "parameters": [
@@ -4247,28 +4641,12 @@
         ]
       }
     },
-    "/v1/residues/cards": {
-      "get": {
+    "/v1/vehicles/{id}/qr/email": {
+      "post": {
         "parameters": [
           {
-            "name": "type_id",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "card_id",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "supplier_id",
-            "in": "query",
+            "name": "id",
+            "in": "path",
             "required": true,
             "schema": {
               "type": "string"
@@ -4276,15 +4654,9 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "200 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/residueCardsOutput"
-                }
-              }
-            }
+          "202": {
+            "description": "202 response",
+            "content": {}
           },
           "400": {
             "description": "400 response",
@@ -4310,27 +4682,11 @@
         ]
       }
     },
-    "/v1/residues/log": {
+    "/v1/versions": {
       "get": {
         "parameters": [
           {
-            "name": "start",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "end",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "supplier_id",
+            "name": "application",
             "in": "query",
             "required": true,
             "schema": {
@@ -4344,7 +4700,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/residueLogOutputArray"
+                  "$ref": "#/components/schemas/version"
                 }
               }
             }
@@ -4365,12 +4721,7 @@
             "description": "500 response",
             "content": {}
           }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
+        }
       }
     },
     "/v1/invoices/active/{id}/details/{detailid}": {
@@ -4662,47 +5013,6 @@
           },
           "404": {
             "description": "404 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
-    "/v1/vehicles/{id}/qr/email": {
-      "post": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "202": {
-            "description": "202 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
             "content": {}
           },
           "500": {
@@ -5285,47 +5595,6 @@
         ]
       }
     },
-    "/v1/vehicles": {
-      "post": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/vehicleInput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "201 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
     "/v1/users/{id}/fuelstations": {
       "get": {
         "parameters": [
@@ -5412,47 +5681,6 @@
         }
       }
     },
-    "/v1/cards/unlock": {
-      "post": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/cardUnLockInput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "201 response",
-            "content": {}
-          },
-          "400": {
-            "description": "400 response",
-            "content": {}
-          },
-          "401": {
-            "description": "401 response",
-            "content": {}
-          },
-          "403": {
-            "description": "403 response",
-            "content": {}
-          },
-          "500": {
-            "description": "500 response",
-            "content": {}
-          }
-        },
-        "security": [
-          {
-            "cognito": []
-          }
-        ]
-      }
-    },
     "/v1/supplies/search/qr": {
       "post": {
         "summary": "",
@@ -5478,38 +5706,6 @@
             }
           },
           "description": ""
-        }
-      }
-    },
-    "/v1/users/promote": {
-      "parameters": [],
-      "post": {
-        "summary": "",
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "422": {
-            "description": "Unprocessable Entity (WebDAV)"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/userPromoteInput"
-              }
-            }
-          }
         }
       }
     }
@@ -5698,6 +5894,7 @@
       "userOutput": {
         "title": "user_output",
         "type": "object",
+        "description": "User data output",
         "properties": {
           "user_role": {
             "type": "integer",
@@ -5752,9 +5949,21 @@
                 "description": "Level of the user"
               }
             }
+          },
+          "enabled_services": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "nfz5hm95rnuux"
+            },
+            "description": "Active services for the user:\n\"iego\" stands for Invoice&GO\n\"dynamic_pin\" stands for offline dynamic pin\n\"online_pin\" stands for online dynamic pin",
+            "items": {
+              "x-stoplight": {
+                "id": "1msc3bvek3ocn"
+              },
+              "type": "string"
+            }
           }
-        },
-        "description": "User data output"
+        }
       },
       "customerInput": {
         "title": "customer_input",
