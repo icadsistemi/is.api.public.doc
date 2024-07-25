@@ -3,7 +3,7 @@
   "info": {
     "title": "Public API",
     "description": "ICAD Sistemi Public API documentation",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "contact": {}
   },
   "servers": [
@@ -808,10 +808,25 @@
                             "x-stoplight": {
                               "id": "pvwqvv01c1fbd"
                             }
+                          },
+                          "number": {
+                            "type": "integer",
+                            "x-stoplight": {
+                              "id": "mdpxb4gw9ey14"
+                            },
+                            "description": "Card number"
+                          },
+                          "vehicle_plate": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "8sxw161z2lzyr"
+                            },
+                            "description": "Optional vehicle plate"
                           }
                         },
                         "required": [
-                          "pan"
+                          "pan",
+                          "number"
                         ]
                       }
                     }
@@ -933,11 +948,26 @@
                               "id": "5cy29qy0kfsfs"
                             },
                             "description": "Pan of the card"
+                          },
+                          "number": {
+                            "type": "integer",
+                            "x-stoplight": {
+                              "id": "x59wld843vaj3"
+                            },
+                            "description": "Card number"
+                          },
+                          "vehicle_plate": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "gksdidz948jnn"
+                            },
+                            "description": "Optional vehicle plate"
                           }
                         },
                         "required": [
                           "totp_seed",
-                          "pan"
+                          "pan",
+                          "number"
                         ]
                       }
                     }
