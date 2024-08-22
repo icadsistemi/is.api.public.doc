@@ -5074,7 +5074,9 @@
           {
             "cognito": []
           }
-        ]
+        ],
+        "operationId": "delete-v1-users-id",
+        "description": ""
       },
       "get": {
         "summary": "",
@@ -5091,7 +5093,17 @@
             }
           }
         }
-      }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ]
     },
     "/v1/users/me": {
       "get": {
@@ -5753,6 +5765,231 @@
             "content": {}
           }
         }
+      }
+    },
+    "/v1/managers/{id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "operationId": "get-v1-managers-id",
+        "description": "get manager datail by id"
+      }
+    },
+    "/v1/managers": {
+      "post": {
+        "summary": "",
+        "operationId": "post-v1-managers",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "description": "add or modify manager ",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/upsertManagers"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/managers/accounts/statements": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "operationId": "get-v1-managers-accounts-statements",
+        "description": "get list of articles from supplier_id",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "supplier_id",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "start_datetime",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "end_datetime",
+            "required": true
+          }
+        ]
+      }
+    },
+    "/v1/managers/{id}/fuelstations": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "operationId": "get-v1-managers-id-fuelstations",
+        "description": "get all fuelstations from the managerId"
+      },
+      "post": {
+        "summary": "",
+        "operationId": "post-v1-managers-id-fuelstations",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/upsertManagerFuelstations"
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "add or modify fuelstation from selected managerId"
+      }
+    },
+    "/v1/managers/fuelstations/{fuelstation_id}/articles": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "fuelstation_id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "operationId": "get-v1-managers-fuelstations-manager_fuelstation_id-articles",
+        "description": "get all articles from the fuelstationId"
+      },
+      "post": {
+        "summary": "",
+        "operationId": "post-v1-managers-fuelstations-manager_fuelstation_id-articles",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/upsertManagerFuelstationArticles"
+              }
+            }
+          }
+        },
+        "description": "add or modify article from selected managerFuelstationId"
       }
     }
   },
@@ -11179,6 +11416,141 @@
             "type": "string"
           }
         }
+      },
+      "upsertManagers": {
+        "type": "object",
+        "x-examples": {
+          "Example 1": {
+            "id": 3,
+            "code": "009",
+            "supplier_id": 1,
+            "name": "Gestore 1",
+            "address": "Via Aires 45",
+            "region": 1,
+            "province": 1,
+            "city": 272,
+            "zipcode": "",
+            "telephone": "",
+            "email": "paolo.deandreis@icadsistemi.com",
+            "note": "",
+            "vat": 21.99,
+            "fiscal_code": "",
+            "is_enabled": true,
+            "edit_datetime": "2024-08-19T14:43:00Z",
+            "edit_user": "paolo.deandreis@icadsistemi.com",
+            "is_manager": true,
+            "margin": 4.27893
+          }
+        },
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "code": {
+            "type": "string"
+          },
+          "supplier_id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "region": {
+            "type": "integer"
+          },
+          "province": {
+            "type": "integer"
+          },
+          "city": {
+            "type": "integer"
+          },
+          "zipcode": {
+            "type": "string"
+          },
+          "telephone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          },
+          "vat": {
+            "type": "number"
+          },
+          "fiscal_code": {
+            "type": "string"
+          },
+          "is_enabled": {
+            "type": "boolean"
+          },
+          "is_manager": {
+            "type": "boolean"
+          },
+          "margin": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "upsertManagerFuelstations": {
+        "type": "object",
+        "x-examples": {
+          "Example 1": {
+            "managerFuelstationID": 0,
+            "iscode": "IS318077",
+            "isEnabled": true
+          }
+        },
+        "properties": {
+          "managerFuelstationID": {
+            "type": "integer"
+          },
+          "iscode": {
+            "type": "string"
+          },
+          "isEnabled": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "managerFuelstationID",
+          "iscode"
+        ]
+      },
+      "upsertManagerFuelstationArticles": {
+        "type": "object",
+        "x-examples": {
+          "Example 1": {
+            "manager_fuelstation_article_id": 0,
+            "article_id": 1,
+            "level_price_id": 34,
+            "quote": 2
+          }
+        },
+        "properties": {
+          "manager_fuelstation_article_id": {
+            "type": "integer"
+          },
+          "article_id": {
+            "type": "integer"
+          },
+          "level_price_id": {
+            "type": "integer"
+          },
+          "quote": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "manager_fuelstation_article_id"
+        ]
       }
     },
     "securitySchemes": {
