@@ -6015,7 +6015,7 @@
           }
         },
         "operationId": "get-v1-tanks-reconciliations-configuration",
-        "description": "get list of tanks of supplier_id selected",
+        "description": "Retrieve tank reconciliation configuration for supplier_id",
         "parameters": [
           {
             "schema": {
@@ -6032,6 +6032,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "403": {
             "description": "Forbidden"
@@ -6055,7 +6058,7 @@
             }
           }
         },
-        "description": "add or modify tanks configurations"
+        "description": "Insert or update row selected of tanks configurations"
       }
     }
   },
