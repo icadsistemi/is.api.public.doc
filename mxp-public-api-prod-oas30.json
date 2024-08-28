@@ -5991,6 +5991,72 @@
         },
         "description": "add or modify article from selected managerFuelstationId"
       }
+    },
+    "/v1/tanks/reconciliations/configuration": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "operationId": "get-v1-tanks-reconciliations-configuration",
+        "description": "get list of tanks of supplier_id selected",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "supplier_id"
+          }
+        ]
+      },
+      "post": {
+        "summary": "",
+        "operationId": "post-v1-tanks-reconciliations-configuration",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/upsertTanksReconciliationsConfiguration"
+              }
+            }
+          }
+        },
+        "description": "add or modify tanks configurations"
+      }
     }
   },
   "components": {
@@ -11522,6 +11588,40 @@
         "required": [
           "managerFuelstationID",
           "iscode"
+        ]
+      },
+      "upsertTanksReconciliationsConfiguration": {
+        "type": "object",
+        "x-examples": {
+          "Example 1": {
+            "id": 0,
+            "product_family_id": 0,
+            "supplier_id": 0,
+            "deficiency": 0,
+            "surplus": 0
+          }
+        },
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "product_family_id": {
+            "type": "integer"
+          },
+          "supplier_id": {
+            "type": "integer"
+          },
+          "deficiency": {
+            "type": "number"
+          },
+          "surplus": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "product_family_id",
+          "supplier_id"
         ]
       },
       "upsertManagerFuelstationArticles": {
