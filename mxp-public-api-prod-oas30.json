@@ -5767,38 +5767,6 @@
         }
       }
     },
-    "/v1/managers/{id}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "id",
-          "in": "path",
-          "required": true
-        }
-      ],
-      "get": {
-        "summary": "Your GET endpoint",
-        "tags": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "422": {
-            "description": "Unprocessable Entity (WebDAV)"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "operationId": "get-v1-managers-id",
-        "description": "get manager datail by id"
-      }
-    },
     "/v1/managers": {
       "post": {
         "summary": "",
@@ -5832,13 +5800,60 @@
         }
       }
     },
+    "/v1/managers/{id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getManagersOutputArray"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "operationId": "get-v1-managers-id",
+        "description": "get manager datail by id",
+        "parameters": []
+      }
+    },
     "/v1/managers/accounts/statements": {
       "get": {
         "summary": "Your GET endpoint",
         "tags": [],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getManagersAccountsStatementsOutputArray"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -5896,7 +5911,14 @@
         "tags": [],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getManagersFuelstationsOutputArray"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -5948,7 +5970,14 @@
         "tags": [],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getManagersFuelstationsArticlesOutputArray"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -5999,7 +6028,13 @@
         "responses": {
           "200": {
             "description": "OK",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getTanksReconciliationsConfigurationOutputArray"
+                }
+              }
+            }
           },
           "403": {
             "description": "Forbidden"
@@ -11653,6 +11688,405 @@
         "required": [
           "manager_fuelstation_article_id"
         ]
+      },
+      "getManagersOutputArray": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "code": {
+              "type": "string"
+            },
+            "supplier_id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "address": {
+              "type": "string"
+            },
+            "region": {
+              "type": "integer"
+            },
+            "province": {
+              "type": "integer"
+            },
+            "city": {
+              "type": "integer"
+            },
+            "zipcode": {
+              "type": "string"
+            },
+            "telephone": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "note": {
+              "type": "string"
+            },
+            "vat": {
+              "type": "integer"
+            },
+            "fiscal_code": {
+              "type": "string"
+            },
+            "is_enabled": {
+              "type": "boolean"
+            },
+            "edit_datetime": {
+              "type": "string"
+            },
+            "edit_user": {
+              "type": "string"
+            },
+            "is_manager": {
+              "type": "boolean"
+            },
+            "margin": {
+              "type": "integer"
+            }
+          }
+        },
+        "x-examples": {
+          "Example 1": [
+            {
+              "id": 1,
+              "code": "001",
+              "supplier_id": 18,
+              "name": "Gestore JP",
+              "address": "Via bueno aires 13",
+              "region": 1,
+              "province": 1,
+              "city": 272,
+              "zipcode": "",
+              "telephone": "",
+              "email": "jeanpierre.miccoli@icadsistemi.com",
+              "note": "",
+              "vat": 5,
+              "fiscal_code": "",
+              "is_enabled": true,
+              "edit_datetime": "2024-08-22T10:48:00Z",
+              "edit_user": "arianna.niccolo@icadsistemi.com",
+              "is_manager": true,
+              "margin": 0
+            }
+          ]
+        }
+      },
+      "getManagersFuelstationsOutputArray": {
+        "type": "array",
+        "x-stoplight": {
+          "id": "un10zcwrcun1r"
+        },
+        "items": {
+          "type": "object",
+          "properties": {
+            "manager_fuelstation_id": {
+              "type": "integer"
+            },
+            "iscode": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "is_enabled": {
+              "type": "boolean"
+            },
+            "fuelstation_id": {
+              "type": "integer"
+            }
+          }
+        },
+        "x-examples": {}
+      },
+      "getManagersFuelstationsArticlesOutputArray": {
+        "type": "array",
+        "x-examples": {
+          "Example 1": [
+            {
+              "ID": 31,
+              "MANAGER_FUELSTATION_ID": 5,
+              "PRODUCT_ID": 2,
+              "LEVEL_PRICE_ID": 32,
+              "QUOTE": 22500,
+              "EDIT_USER": "jeanpierre.miccoli@icadsistemi.com",
+              "EDIT_DATETIME": "2024-08-22T11:48:00"
+            }
+          ]
+        },
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "x-stoplight": {
+                "id": "nfris0tcfpa32"
+              }
+            },
+            "manager_fuelstation_id": {
+              "type": "integer",
+              "x-stoplight": {
+                "id": "svhyp5tom7ix6"
+              }
+            },
+            "product_id": {
+              "type": "integer",
+              "x-stoplight": {
+                "id": "kzozmbhhrrb5i"
+              }
+            },
+            "level_price_id": {
+              "type": "integer",
+              "x-stoplight": {
+                "id": "86rslhlsasraf"
+              }
+            },
+            "quote": {
+              "type": "integer",
+              "x-stoplight": {
+                "id": "j37jg7x18613t"
+              }
+            },
+            "edit_user": {
+              "type": "string",
+              "x-stoplight": {
+                "id": "5p6oh1j4xkedh"
+              }
+            },
+            "edit_datatime": {
+              "type": "string",
+              "x-stoplight": {
+                "id": "yc8c2dmpwt965"
+              }
+            }
+          }
+        }
+      },
+      "getManagersAccountsStatementsOutputArray": {
+        "type": "array",
+        "x-stoplight": {
+          "id": "1fa45cf72b964"
+        },
+        "items": {
+          "type": "object",
+          "properties": {
+            "manager_id": {
+              "type": "string"
+            },
+            "manager_name": {
+              "type": "string"
+            },
+            "year": {
+              "type": "integer"
+            },
+            "month": {
+              "type": "integer"
+            },
+            "iscode": {
+              "type": "string"
+            },
+            "fuelstation_id": {
+              "type": "integer"
+            },
+            "fuelstation_name": {
+              "type": "string"
+            },
+            "article_id": {
+              "type": "integer"
+            },
+            "article_name": {
+              "type": "string"
+            },
+            "level_price_description": {
+              "type": "string"
+            },
+            "quote": {
+              "type": "integer"
+            },
+            "quantity": {
+              "type": "number"
+            },
+            "profit_margin": {
+              "type": "integer"
+            },
+            "vat": {
+              "type": "integer"
+            },
+            "total_profit_margin": {
+              "type": "integer"
+            }
+          }
+        },
+        "x-examples": {
+          "Example 1": [
+            {
+              "manager_id": "1",
+              "manager_name": "Gestore JP",
+              "year": 2023,
+              "month": 1,
+              "iscode": "IS318077",
+              "fuelstation_id": 2946,
+              "fuelstation_name": "CERESOLE REALE",
+              "article_id": 1,
+              "article_name": "Verde",
+              "level_price_description": "SELF",
+              "quote": 0,
+              "quantity": 27488.34,
+              "profit_margin": 0,
+              "vat": 5,
+              "total_profit_margin": 0
+            }
+          ]
+        }
+      },
+      "getTanksReconciliationsConfigurationOutputArray": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "product_family_tanks_reconciliation_id": {
+              "type": "integer"
+            },
+            "product_name": {
+              "type": "string"
+            },
+            "product_family_id": {
+              "type": "integer"
+            },
+            "deficiency": {
+              "type": "number"
+            },
+            "surplus": {
+              "type": "number"
+            }
+          }
+        },
+        "x-examples": {
+          "Example 1": [
+            {
+              "product_family_tanks_reconciliation_id": 1,
+              "product_name": "GASOLI",
+              "product_family_id": 1,
+              "deficiency": 1.13,
+              "surplus": 1.34
+            }
+          ]
+        }
+      },
+      "getAccountsStatementsOutputArray": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "manager_id": {
+              "type": "string"
+            },
+            "manager_name": {
+              "type": "string"
+            },
+            "year": {
+              "type": "integer"
+            },
+            "month": {
+              "type": "integer"
+            },
+            "iscode": {
+              "type": "string"
+            },
+            "fuelstation_id": {
+              "type": "integer"
+            },
+            "fuelstation_name": {
+              "type": "string"
+            },
+            "article_id": {
+              "type": "integer"
+            },
+            "article_name": {
+              "type": "string"
+            },
+            "level_price_description": {
+              "type": "string"
+            },
+            "quote": {
+              "type": "integer"
+            },
+            "quantity": {
+              "type": "number"
+            },
+            "profit_margin": {
+              "type": "integer"
+            },
+            "vat": {
+              "type": "integer"
+            },
+            "total_profit_margin": {
+              "type": "integer"
+            }
+          }
+        },
+        "x-examples": {
+          "Example 1": [
+            {
+              "manager_id": "1",
+              "manager_name": "Gestore JP",
+              "year": 2023,
+              "month": 1,
+              "iscode": "IS318077",
+              "fuelstation_id": 2946,
+              "fuelstation_name": "CERESOLE REALE",
+              "article_id": 1,
+              "article_name": "Verde",
+              "level_price_description": "SELF",
+              "quote": 0,
+              "quantity": 27488.34,
+              "profit_margin": 0,
+              "vat": 5,
+              "total_profit_margin": 0
+            }
+          ]
+        }
+      },
+      "getManagersIdFuelstationsOutputArray": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "manager_fuelstation_id": {
+              "type": "integer"
+            },
+            "iscode": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "is_enabled": {
+              "type": "boolean"
+            },
+            "fuelstation_id": {
+              "type": "integer"
+            }
+          }
+        },
+        "x-examples": {
+          "Example 1": [
+            {
+              "manager_fuelstation_id": 1,
+              "iscode": "IS316245",
+              "description": "PIOSSASCO",
+              "is_enabled": true,
+              "fuelstation_id": 2772
+            }
+          ]
+        }
       }
     },
     "securitySchemes": {
