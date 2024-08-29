@@ -6022,7 +6022,8 @@
               "type": "string"
             },
             "in": "query",
-            "name": "supplier_id"
+            "name": "supplier_id",
+            "required": true
           }
         ]
       },
@@ -11605,8 +11606,11 @@
           }
         },
         "properties": {
-          "id": {
-            "type": "integer"
+          "product_family_tanks_reconciliation_id": {
+            "type": "integer",
+            "x-stoplight": {
+              "id": "wa37o92ythvex"
+            }
           },
           "product_family_id": {
             "type": "integer"
@@ -11620,12 +11624,7 @@
           "surplus": {
             "type": "number"
           }
-        },
-        "required": [
-          "id",
-          "product_family_id",
-          "supplier_id"
-        ]
+        }
       },
       "upsertManagerFuelstationArticles": {
         "type": "object",
