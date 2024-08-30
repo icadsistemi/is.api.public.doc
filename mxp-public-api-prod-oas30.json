@@ -3,7 +3,7 @@
   "info": {
     "title": "Public API",
     "description": "ICAD Sistemi Public API documentation",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "contact": {}
   },
   "servers": [
@@ -5184,8 +5184,7 @@
           {
             "cognito": []
           }
-        ],
-        "operationId": "users-search"
+        ]
       }
     },
     "/v1/users/{id}/fuelstations": {
@@ -5771,7 +5770,6 @@
     "/v1/managers": {
       "post": {
         "summary": "",
-        "operationId": "post-v1-managers",
         "responses": {
           "200": {
             "description": "OK"
@@ -5836,7 +5834,6 @@
             "description": "Internal Server Error"
           }
         },
-        "operationId": "get-v1-managers-id",
         "description": "",
         "parameters": []
       }
@@ -5866,7 +5863,6 @@
             "description": "Internal Server Error"
           }
         },
-        "operationId": "get-v1-managers-accounts-statements",
         "description": "",
         "parameters": [
           {
@@ -5931,12 +5927,10 @@
             "description": "Internal Server Error"
           }
         },
-        "operationId": "get-v1-managers-id-fuelstations",
         "description": ""
       },
       "post": {
         "summary": "",
-        "operationId": "post-v1-managers-id-fuelstations",
         "responses": {
           "200": {
             "description": "OK"
@@ -5990,12 +5984,10 @@
             "description": "Internal Server Error"
           }
         },
-        "operationId": "get-v1-managers-fuelstations-manager_fuelstation_id-articles",
         "description": ""
       },
       "post": {
         "summary": "",
-        "operationId": "post-v1-managers-fuelstations-manager_fuelstation_id-articles",
         "responses": {
           "200": {
             "description": "OK"
@@ -6050,7 +6042,6 @@
             "description": "Internal Server Error"
           }
         },
-        "operationId": "get-v1-tanks-reconciliations-configuration",
         "description": "",
         "parameters": [
           {
@@ -6065,7 +6056,6 @@
       },
       "post": {
         "summary": "",
-        "operationId": "post-v1-tanks-reconciliations-configuration",
         "responses": {
           "200": {
             "description": "OK"
