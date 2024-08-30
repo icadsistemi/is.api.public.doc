@@ -11808,65 +11808,44 @@
       },
       "getManagersFuelstationsArticlesOutputArray": {
         "type": "array",
-        "x-examples": {
-          "Example 1": [
-            {
-              "ID": 31,
-              "MANAGER_FUELSTATION_ID": 5,
-              "PRODUCT_ID": 2,
-              "LEVEL_PRICE_ID": 32,
-              "QUOTE": 22500,
-              "EDIT_USER": "jeanpierre.miccoli@icadsistemi.com",
-              "EDIT_DATETIME": "2024-08-22T11:48:00"
-            }
-          ]
-        },
         "items": {
           "type": "object",
           "properties": {
-            "id": {
-              "type": "integer",
-              "x-stoplight": {
-                "id": "nfris0tcfpa32"
-              }
+            "manager_fuelstation_article_id": {
+              "type": "integer"
             },
             "manager_fuelstation_id": {
-              "type": "integer",
-              "x-stoplight": {
-                "id": "svhyp5tom7ix6"
-              }
+              "type": "integer"
             },
-            "product_id": {
-              "type": "integer",
-              "x-stoplight": {
-                "id": "kzozmbhhrrb5i"
-              }
+            "article_id": {
+              "type": "integer"
+            },
+            "article_name": {
+              "type": "string"
             },
             "level_price_id": {
-              "type": "integer",
-              "x-stoplight": {
-                "id": "86rslhlsasraf"
-              }
+              "type": "integer"
+            },
+            "level_price_description": {
+              "type": "string"
             },
             "quote": {
-              "type": "integer",
-              "x-stoplight": {
-                "id": "j37jg7x18613t"
-              }
-            },
-            "edit_user": {
-              "type": "string",
-              "x-stoplight": {
-                "id": "5p6oh1j4xkedh"
-              }
-            },
-            "edit_datatime": {
-              "type": "string",
-              "x-stoplight": {
-                "id": "yc8c2dmpwt965"
-              }
+              "type": "integer"
             }
           }
+        },
+        "x-examples": {
+          "Example 1": [
+            {
+              "manager_fuelstation_article_id": 0,
+              "manager_fuelstation_id": 12,
+              "article_id": 5,
+              "article_name": "AdBlue",
+              "level_price_id": 32,
+              "level_price_description": "POST-PAY",
+              "quote": 0
+            }
+          ]
         }
       },
       "getManagersAccountsStatementsOutputArray": {
