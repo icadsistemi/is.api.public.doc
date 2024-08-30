@@ -3,7 +3,7 @@
   "info": {
     "title": "Public API",
     "description": "ICAD Sistemi Public API documentation",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "contact": {}
   },
   "servers": [
@@ -5184,7 +5184,8 @@
           {
             "cognito": []
           }
-        ]
+        ],
+        "operationId": "users-search"
       }
     },
     "/v1/users/{id}/fuelstations": {
@@ -5788,7 +5789,7 @@
             "description": "Internal Server Error"
           }
         },
-        "description": "add or modify manager ",
+        "description": "",
         "requestBody": {
           "content": {
             "application/json": {
@@ -5812,7 +5813,7 @@
         }
       ],
       "get": {
-        "summary": "Your GET endpoint",
+        "summary": "",
         "tags": [],
         "responses": {
           "200": {
@@ -5836,13 +5837,13 @@
           }
         },
         "operationId": "get-v1-managers-id",
-        "description": "get manager datail by id",
+        "description": "",
         "parameters": []
       }
     },
     "/v1/managers/accounts/statements": {
       "get": {
-        "summary": "Your GET endpoint",
+        "summary": "",
         "tags": [],
         "responses": {
           "200": {
@@ -5866,7 +5867,7 @@
           }
         },
         "operationId": "get-v1-managers-accounts-statements",
-        "description": "get list of articles from supplier_id",
+        "description": "",
         "parameters": [
           {
             "schema": {
@@ -5907,7 +5908,7 @@
         }
       ],
       "get": {
-        "summary": "Your GET endpoint",
+        "summary": "",
         "tags": [],
         "responses": {
           "200": {
@@ -5931,7 +5932,7 @@
           }
         },
         "operationId": "get-v1-managers-id-fuelstations",
-        "description": "get all fuelstations from the managerId"
+        "description": ""
       },
       "post": {
         "summary": "",
@@ -5951,7 +5952,7 @@
           },
           "description": ""
         },
-        "description": "add or modify fuelstation from selected managerId"
+        "description": ""
       }
     },
     "/v1/managers/fuelstations/{fuelstation_id}/articles": {
@@ -5966,7 +5967,7 @@
         }
       ],
       "get": {
-        "summary": "Your GET endpoint",
+        "summary": "",
         "tags": [],
         "responses": {
           "200": {
@@ -5990,7 +5991,7 @@
           }
         },
         "operationId": "get-v1-managers-fuelstations-manager_fuelstation_id-articles",
-        "description": "get all articles from the fuelstationId"
+        "description": ""
       },
       "post": {
         "summary": "",
@@ -6018,12 +6019,12 @@
             }
           }
         },
-        "description": "add or modify article from selected managerFuelstationId"
+        "description": ""
       }
     },
     "/v1/tanks/reconciliations/configuration": {
       "get": {
-        "summary": "Your GET endpoint",
+        "summary": "",
         "tags": [],
         "responses": {
           "200": {
@@ -6050,7 +6051,7 @@
           }
         },
         "operationId": "get-v1-tanks-reconciliations-configuration",
-        "description": "Retrieve tank reconciliation configuration for supplier_id",
+        "description": "",
         "parameters": [
           {
             "schema": {
@@ -6094,7 +6095,7 @@
             }
           }
         },
-        "description": "Insert or update row selected of tanks configurations"
+        "description": ""
       }
     }
   },
