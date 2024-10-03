@@ -3,7 +3,7 @@
   "info": {
     "title": "Public API",
     "description": "ICAD Sistemi Public API documentation",
-    "version": "1.0.10",
+    "version": "1.0.11",
     "contact": {}
   },
   "servers": [
@@ -6088,7 +6088,7 @@
         "description": ""
       }
     },
-    "/v1/tanks/reconciliations/history": {
+    "/v1/tanks/reconciliations/data": {
       "get": {
         "summary": "",
         "tags": [],
@@ -6245,6 +6245,14 @@
             "name": "date_end",
             "description": "Unix time format",
             "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "is_analysis",
+            "description": "boolean value for get analysis data if true or history data if false"
           }
         ],
         "requestBody": {
