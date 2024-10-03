@@ -3,7 +3,7 @@
   "info": {
     "title": "Public API",
     "description": "ICAD Sistemi Public API documentation",
-    "version": "1.0.11",
+    "version": "1.0.12",
     "contact": {}
   },
   "servers": [
@@ -6099,28 +6099,6 @@
               "application/json": {
                 "schema": {
                   "type": "array",
-                  "x-examples": {
-                    "Example 1": [
-                      {
-                        "reference_date": "2023-12-31T00:00:00Z",
-                        "fuelstation_name": "CUNEO",
-                        "store_id": "IS317050",
-                        "supplier_name": "DISCAR",
-                        "tolerance": 1081.52,
-                        "utf_tolerance": 0,
-                        "product_id": 2,
-                        "product_name": "Diesel",
-                        "initial_stock_quantity": 13658.27,
-                        "load": 0,
-                        "manual_load": 0,
-                        "total_load": 13658.27,
-                        "manual_drain": 0,
-                        "shots_empty": 0,
-                        "drain": 936.56,
-                        "total_drain": 936.56
-                      }
-                    ]
-                  },
                   "items": {
                     "type": "object",
                     "properties": {
@@ -6138,6 +6116,9 @@
                       },
                       "tolerance": {
                         "type": "number"
+                      },
+                      "is_tolerance_in_range": {
+                        "type": "boolean"
                       },
                       "utf_tolerance": {
                         "type": "integer"
@@ -6171,8 +6152,71 @@
                       },
                       "total_drain": {
                         "type": "number"
+                      },
+                      "min": {
+                        "type": "number"
+                      },
+                      "max": {
+                        "type": "number"
+                      },
+                      "progressive_decrease": {
+                        "type": "number"
+                      },
+                      "decrease_percentage": {
+                        "type": "number"
+                      },
+                      "tolerance_check": {
+                        "type": "number"
+                      },
+                      "is_tolerance_check_in_range": {
+                        "type": "boolean"
+                      },
+                      "is_decrease_percentage_in_range": {
+                        "type": "boolean"
+                      },
+                      "predetermined_load_deficiencies": {
+                        "type": "integer"
+                      },
+                      "first_level": {
+                        "type": "number"
+                      },
+                      "last_level": {
+                        "type": "number"
                       }
                     }
+                  },
+                  "x-examples": {
+                    "Example 1": [
+                      {
+                        "reference_date": "2023-12-31T00:00:00Z",
+                        "fuelstation_name": "CUNEO",
+                        "store_id": "IS317050",
+                        "supplier_name": "DISCAR",
+                        "tolerance": -292.02,
+                        "is_tolerance_in_range": false,
+                        "utf_tolerance": 0,
+                        "product_id": 1,
+                        "product_name": "Verde",
+                        "initial_stock_quantity": 11452.66,
+                        "load": 0,
+                        "manual_load": 0,
+                        "total_load": 11452.66,
+                        "manual_drain": 0,
+                        "shots_empty": 0,
+                        "drain": 310.02,
+                        "total_drain": 310.02,
+                        "min": 1.55,
+                        "max": 1.55,
+                        "progressive_decrease": 9.11,
+                        "decrease_percentage": 29.39,
+                        "tolerance_check": 9.11,
+                        "is_tolerance_check_in_range": false,
+                        "is_decrease_percentage_in_range": false,
+                        "predetermined_load_deficiencies": 0,
+                        "first_level": 11753.79,
+                        "last_level": 11434.66
+                      }
+                    ]
                   }
                 },
                 "examples": {
@@ -6184,6 +6228,7 @@
                         "store_id": "string",
                         "supplier_name": "string",
                         "tolerance": 0,
+                        "is_tolerance_in_range": true,
                         "utf_tolerance": 0,
                         "product_id": 0,
                         "product_name": "string",
@@ -6194,7 +6239,17 @@
                         "manual_drain": 0,
                         "shots_empty": 0,
                         "drain": 0,
-                        "total_drain": 0
+                        "total_drain": 0,
+                        "min": 0,
+                        "max": 0,
+                        "progressive_decrease": 0,
+                        "decrease_percentage": 0,
+                        "tolerance_check": 0,
+                        "is_tolerance_check_in_range": true,
+                        "is_decrease_percentage_in_range": true,
+                        "predetermined_load_deficiencies": 0,
+                        "first_level": 0,
+                        "last_level": 0
                       }
                     ]
                   }
