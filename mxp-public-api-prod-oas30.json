@@ -6456,7 +6456,7 @@
             "description": "Internal Server Error"
           }
         },
-        "description": "Returns trend data for manual stocks management.",
+        "description": "",
         "parameters": [
           {
             "schema": {
