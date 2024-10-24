@@ -3,7 +3,7 @@
   "info": {
     "title": "Public API",
     "description": "ICAD Sistemi Public API documentation",
-    "version": "1.0.12",
+    "version": "1.0.13",
     "contact": {}
   },
   "servers": [
@@ -6308,6 +6308,182 @@
             "in": "query",
             "name": "is_analysis",
             "description": "boolean value for get analysis data if true or history data if false"
+          }
+        ],
+        "requestBody": {
+          "content": {}
+        }
+      },
+      "parameters": []
+    },
+    "/v1/tanks/manualstocks/trend": {
+      "get": {
+        "summary": "",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "x-examples": {
+                    "Example 1": [
+                      {
+                        "reference_date": "2023-12-31T00:00:00Z",
+                        "fuelstation_name": "CUNEO",
+                        "store_id": "IS317050",
+                        "supplier_name": "DISCAR",
+                        "tolerance": -292.02,
+                        "is_tolerance_in_range": false,
+                        "utf_tolerance": 0,
+                        "product_id": 1,
+                        "product_name": "Verde",
+                        "initial_stock_quantity": 11452.66,
+                        "load": 0,
+                        "manual_load": 0,
+                        "total_load": 11452.66,
+                        "manual_drain": 0,
+                        "shots_empty": 0,
+                        "drain": 310.02,
+                        "total_drain": 310.02,
+                        "min": 1.55,
+                        "max": 1.55,
+                        "progressive_decrease": 9.11,
+                        "decrease_percentage": 29.39,
+                        "tolerance_check": 9.11,
+                        "is_tolerance_check_in_range": false,
+                        "is_decrease_percentage_in_range": false,
+                        "predetermined_load_deficiencies": 0,
+                        "first_level": 11753.79,
+                        "last_level": 11434.66
+                      }
+                    ]
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "fuelstation_id": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "5jafgh316hbyv"
+                        }
+                      },
+                      "fuelstation_name": {
+                        "type": "string"
+                      },
+                      "is_code": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "dc6mbelhvgpom"
+                        }
+                      },
+                      "reference_date": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "e0pp2wd57fneh"
+                        }
+                      },
+                      "product_id": {
+                        "type": "integer"
+                      },
+                      "product_name": {
+                        "type": "string"
+                      },
+                      "initial_stock_quantity": {
+                        "type": "number"
+                      },
+                      "final_stock_quantity": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "bxmtuz8i0bc9w"
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": [
+                      {
+                        "reference_date": "string",
+                        "fuelstation_name": "string",
+                        "store_id": "string",
+                        "supplier_name": "string",
+                        "tolerance": 0,
+                        "is_tolerance_in_range": true,
+                        "utf_tolerance": 0,
+                        "product_id": 0,
+                        "product_name": "string",
+                        "initial_stock_quantity": 0,
+                        "load": 0,
+                        "manual_load": 0,
+                        "total_load": 0,
+                        "manual_drain": 0,
+                        "shots_empty": 0,
+                        "drain": 0,
+                        "total_drain": 0,
+                        "min": 0,
+                        "max": 0,
+                        "progressive_decrease": 0,
+                        "decrease_percentage": 0,
+                        "tolerance_check": 0,
+                        "is_tolerance_check_in_range": true,
+                        "is_decrease_percentage_in_range": true,
+                        "predetermined_load_deficiencies": 0,
+                        "first_level": 0,
+                        "last_level": 0
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "description": "Returns trend data for manual stocks management.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "fuelstation_ids",
+            "required": true,
+            "description": "Fuel station identifiers with comma separation (for exampe 3381,3385,ecc..)"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "date_start",
+            "description": "Start date time on unix time format",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "date_end",
+            "description": "Ebd date time on unix time format",
+            "required": true
           }
         ],
         "requestBody": {
