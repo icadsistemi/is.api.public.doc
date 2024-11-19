@@ -3,7 +3,7 @@ name: API build and deploy
 on:
   push:
     paths:
-      - reference/**
+      - mxp-public-api-prod-oas30.json
     branches:
       - master
 
@@ -18,7 +18,7 @@ jobs:
           uses: icadsistemi/openapitools-generator-action@v1.5.2
           with:
             generator: html2
-            openapi-file: reference/mxp-public-api-prod-oas30.json
+            openapi-file: mxp-public-api-prod-oas30.json
             command-args: -o docs
     
         - name: Commit new documentation
