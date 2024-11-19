@@ -6312,10 +6312,7 @@
             "name": "is_analysis",
             "description": "boolean value for get analysis data if true or history data if false"
           }
-        ],
-        "requestBody": {
-          "content": {}
-        }
+        ]
       },
       "parameters": []
     },
@@ -6488,10 +6485,7 @@
             "description": "Ebd date time on unix time format",
             "required": true
           }
-        ],
-        "requestBody": {
-          "content": {}
-        }
+        ]
       },
       "parameters": []
     }
