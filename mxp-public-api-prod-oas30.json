@@ -3,7 +3,7 @@
   "info": {
     "title": "Public API",
     "description": "ICAD Sistemi Public API documentation",
-    "version": "1.0.14",
+    "version": "1.0.15",
     "contact": {}
   },
   "servers": [
@@ -3329,6 +3329,101 @@
             "cognito": []
           }
         ]
+      }
+    },
+    "/v1/payments/methods": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/paymentTermsOutputArray"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "404": {
+            "description": "404 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ],
+        "description": "get payment methods",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "supplier_id",
+            "description": "supplier identifier"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "source",
+            "description": "portal reference"
+          }
+        ],
+        "requestBody": {
+          "content": {}
+        },
+        "operationId": "get-v1-payments-methods"
+      },
+      "parameters": [],
+      "put": {
+        "summary": "",
+        "operationId": "put-v1-payments-methods",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "description": "put payment method",
+        "security": [
+          {
+            "cognito": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/putPaymentMethodInput"
+              }
+            }
+          }
+        }
       }
     },
     "/v1/payments/periodicities": {
@@ -10258,6 +10353,26 @@
           }
         }
       },
+      "paymentMethodOutputArray": {
+        "title": "payment_periodicity_output_array",
+        "x-stoplight": {
+          "id": "3t29n2vkv3mv9"
+        },
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "putPaymentMethodInput": {
+        "title": "put_payment_method_input",
+        "x-stoplight": {
+          "id": "0jap93wh3nvkh"
+        },
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
       "cardOutput": {
         "title": "card_output",
         "type": "object",
@@ -12458,6 +12573,87 @@
             }
           ]
         }
+      },
+      "paymentPeriodicityOutputArray - copy": {
+        "type": "array",
+        "x-examples": {
+          "Example 1": [
+            {
+              "id": 997,
+              "name": "PAGOBANCOMAT    ",
+              "description": "PAGOBANCOMAT    ",
+              "invoice": 3,
+              "import_export_to_sn": false,
+              "is_pos_pax_available": false
+            }
+          ]
+        },
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string",
+              "description": "payment method name"
+            },
+            "description": {
+              "type": "string",
+              "description": "payment method description"
+            },
+            "invoice": {
+              "type": "integer",
+              "description": "indicates the type of billing managed on the card"
+            },
+            "import_export_to_sn": {
+              "type": "boolean",
+              "description": "If true it indicates that the circuit will be enabled for import from Overview to Selfnet"
+            },
+            "is_pos_pax_available": {
+              "type": "boolean",
+              "description": "If true it indicates that the circuit will be enabled to be recognized on the PAX POS"
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      },
+      "paymentMethodOutputArray - copy": {
+        "type": "object",
+        "x-examples": {
+          "Example 1": {
+            "id": 997,
+            "invoice": 3,
+            "import_export_to_sn": false,
+            "is_pos_pax_available": false
+          }
+        },
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "payment identifier"
+          },
+          "invoice": {
+            "type": "integer",
+            "description": "Indicates the type of billing managed on the card"
+          },
+          "import_export_to_sn": {
+            "type": "boolean",
+            "description": "If true it indicates that the circuit will be enabled for import from Overview to Selfnet"
+          },
+          "is_pos_pax_available": {
+            "type": "boolean",
+            "description": "If true it indicates that the circuit will be enabled to be recognized on the PAX POS"
+          }
+        },
+        "required": [
+          "id",
+          "invoice",
+          "import_export_to_sn",
+          "is_pos_pax_available"
+        ]
       }
     },
     "securitySchemes": {
