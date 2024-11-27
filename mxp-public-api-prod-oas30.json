@@ -1818,7 +1818,8 @@
           {
             "cognito": []
           }
-        ]
+        ],
+        "operationId": "post summary report"
       }
     },
     "/v1/customers/search": {
@@ -6583,6 +6584,36 @@
         ]
       },
       "parameters": []
+    },
+    "/v1/utf/post": {
+      "post": {
+        "summary": "",
+        "operationId": "",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postSummaryReport"
+              }
+            }
+          }
+        },
+        "description": ""
+      }
     }
   },
   "components": {
@@ -12654,6 +12685,23 @@
           "import_export_to_sn",
           "is_pos_pax_available"
         ]
+      },
+      "postSummaryReport": {
+        "type": "object",
+        "properties": {
+          "year": {
+            "type": "integer"
+          },
+          "fuelStation_id": {
+            "type": "integer"
+          }
+        },
+        "x-examples": {
+          "Example 1": {
+            "year": 2021,
+            "fuelStation_id": 3385
+          }
+        }
       }
     },
     "securitySchemes": {
