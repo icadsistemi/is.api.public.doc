@@ -3438,9 +3438,6 @@
             "description": "portal reference"
           }
         ],
-        "requestBody": {
-          "content": {}
-        },
         "operationId": "get-v1-payments-methods"
       },
       "parameters": [],
@@ -6640,7 +6637,7 @@
     "/v1/utf/post": {
       "post": {
         "summary": "",
-        "operationId": "",
+        "operationId": "utf-post",
         "responses": {
           "204": {
             "description": "No Content"
@@ -12657,8 +12654,11 @@
           ]
         }
       },
-      "paymentPeriodicityOutputArray - copy": {
+      "paymentPeriodicityOutputArrayCopy": {
         "type": "array",
+        "x-stoplight": {
+          "id": "12e065dc74690"
+        },
         "x-examples": {
           "Example 1": [
             {
@@ -12703,8 +12703,11 @@
           ]
         }
       },
-      "paymentMethodOutputArray - copy": {
+      "paymentMethodOutputArrayCopy": {
         "type": "object",
+        "x-stoplight": {
+          "id": "314eb197db64f"
+        },
         "x-examples": {
           "Example 1": {
             "id": 997,
@@ -12736,7 +12739,9 @@
           "invoice",
           "import_export_to_sn",
           "is_pos_pax_available"
-        ]
+        ],
+        "title": "paymentPeriodicityCopy",
+        "description": ""
       },
       "postSummaryReport": {
         "type": "object",
