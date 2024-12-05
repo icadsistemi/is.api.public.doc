@@ -6692,7 +6692,6 @@
             "description": "Internal Server Error"
           }
         },
-        "operationId": "get-v1-tanks-margin-management-configuration",
         "parameters": [
           {
             "schema": {
@@ -6760,14 +6759,13 @@
             "description": "Internal Server Error"
           }
         },
-        "operationId": "get-v1-tanks-trend",
         "parameters": [
           {
             "schema": {
               "type": "string"
             },
             "in": "query",
-            "name": "fuelstation_ids"
+            "name": "fuelstation_id"
           },
           {
             "schema": {
@@ -6783,7 +6781,8 @@
             "in": "query",
             "name": "date_end"
           }
-        ]
+        ],
+        "description": ""
       },
       "parameters": []
     }
