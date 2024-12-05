@@ -6760,7 +6760,30 @@
             "description": "Internal Server Error"
           }
         },
-        "operationId": "get-v1-tanks-trend"
+        "operationId": "get-v1-tanks-trend",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "fuelstation_ids"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "date_start"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "date_end"
+          }
+        ]
       },
       "parameters": []
     }
