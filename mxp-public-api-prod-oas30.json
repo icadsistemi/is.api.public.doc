@@ -3,7 +3,7 @@
   "info": {
     "title": "Public API",
     "description": "ICAD Sistemi Public API documentation",
-    "version": "1.0.16",
+    "version": "1.1.0",
     "contact": {}
   },
   "servers": [
@@ -6765,21 +6765,24 @@
               "type": "string"
             },
             "in": "query",
-            "name": "fuelstation_id"
+            "name": "supplier_id",
+            "description": "Supplier id"
           },
           {
             "schema": {
               "type": "string"
             },
             "in": "query",
-            "name": "date_start"
+            "name": "date_start",
+            "description": "Start date time on unix format"
           },
           {
             "schema": {
               "type": "string"
             },
             "in": "query",
-            "name": "date_end"
+            "name": "date_end",
+            "description": "End date time on unix format"
           }
         ],
         "description": ""
@@ -12882,68 +12885,6 @@
           }
         }
       },
-      "updateInvoiceDetail": {
-        "type": "object",
-        "x-examples": {
-          "Example 1": {
-            "id": 0,
-            "article_id": 0,
-            "vehicle_id": 0,
-            "unit_price": 0,
-            "total_amount": 0,
-            "transaction_timestamp": "14:15:22Z",
-            "receipt_number": "string",
-            "km": 0,
-            "payments": {
-              "payment_method_code": "string",
-              "amount": 0
-            }
-          }
-        },
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "article_id": {
-            "type": "integer"
-          },
-          "vehicle_id": {
-            "type": "integer"
-          },
-          "unit_price": {
-            "type": "integer"
-          },
-          "total_amount": {
-            "type": "integer"
-          },
-          "transaction_timestamp": {
-            "type": "string"
-          },
-          "receipt_number": {
-            "type": "string"
-          },
-          "km": {
-            "type": "integer"
-          },
-          "payments": {
-            "type": "object",
-            "properties": {
-              "payment_method_code": {
-                "type": "string"
-              },
-              "amount": {
-                "type": "integer"
-              }
-            }
-          }
-        },
-        "required": [
-          "id",
-          "unit_price",
-          "total_amount",
-          "transaction_timestamp"
-        ]
-      },
       "getMarginManagementConfiguration": {
         "type": "array",
         "x-examples": {
@@ -13056,17 +12997,23 @@
             "id": {
               "type": "string"
             },
-            "is_code": {
-              "type": "string"
+            "supplier_id": {
+              "type": "integer",
+              "x-stoplight": {
+                "id": "j9bj0g2awlqpn"
+              }
             },
-            "fuelstation_id": {
-              "type": "integer"
+            "article_name": {
+              "type": "string",
+              "x-stoplight": {
+                "id": "d0z3041bevttv"
+              }
             },
-            "product_name": {
-              "type": "string"
-            },
-            "product_id": {
-              "type": "integer"
+            "article_id": {
+              "type": "integer",
+              "x-stoplight": {
+                "id": "4yqer0yzwom2z"
+              }
             },
             "price": {
               "type": "number"
@@ -13081,25 +13028,70 @@
           }
         }
       },
-      "upsertMarginManagementConfiguration": {
+      "updateInvoiceDetail": {
         "type": "object",
-        "properties": {
-          "FuelStationId": {
-            "type": "integer"
-          },
-          "ProductId": {
-            "type": "integer"
-          },
-          "StartDateTime": {
-            "type": "integer"
-          },
-          "Price": {
-            "type": "number"
-          },
-          "Quantity": {
-            "type": "number"
+        "x-examples": {
+          "Example 1": {
+            "id": 0,
+            "article_id": 0,
+            "vehicle_id": 0,
+            "unit_price": 0,
+            "total_amount": 0,
+            "transaction_timestamp": "14:15:22Z",
+            "receipt_number": "string",
+            "km": 0,
+            "payments": {
+              "payment_method_code": "string",
+              "amount": 0
+            }
           }
         },
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "article_id": {
+            "type": "integer"
+          },
+          "vehicle_id": {
+            "type": "integer"
+          },
+          "unit_price": {
+            "type": "integer"
+          },
+          "total_amount": {
+            "type": "integer"
+          },
+          "transaction_timestamp": {
+            "type": "string"
+          },
+          "receipt_number": {
+            "type": "string"
+          },
+          "km": {
+            "type": "integer"
+          },
+          "payments": {
+            "type": "object",
+            "properties": {
+              "payment_method_code": {
+                "type": "string"
+              },
+              "amount": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "required": [
+          "id",
+          "unit_price",
+          "total_amount",
+          "transaction_timestamp"
+        ]
+      },
+      "upsertMarginManagementConfiguration": {
+        "type": "object",
         "x-examples": {
           "Example 1": {
             "FuelStationId": 3385,
@@ -13108,77 +13100,42 @@
             "Price": 1.234,
             "Quantity": 2340.5
           }
+        },
+        "properties": {
+          "supplier_id": {
+            "type": "integer",
+            "x-stoplight": {
+              "id": "1irbrqv0b1p04"
+            }
+          },
+          "article_id": {
+            "type": "integer",
+            "x-stoplight": {
+              "id": "7dzu9yqut6prt"
+            }
+          },
+          "start_datetime": {
+            "type": "integer",
+            "x-stoplight": {
+              "id": "71x9rajoqdfat"
+            }
+          },
+          "price": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "yr6bufxnkznpj"
+            }
+          },
+          "quantity": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "3rwkflsqyihl4"
+            }
+          }
         }
       },
       "getMarginManagementTrend": {
         "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "fuel_station_id": {
-              "type": "integer"
-            },
-            "is_code": {
-              "type": "string"
-            },
-            "reference_date": {
-              "type": "string"
-            },
-            "start_date": {
-              "type": "object",
-              "properties": {
-                "Time": {
-                  "type": "string"
-                },
-                "Valid": {
-                  "type": "boolean"
-                }
-              }
-            },
-            "article_id": {
-              "type": "integer"
-            },
-            "article_name": {
-              "type": "string"
-            },
-            "start_quantity": {
-              "type": "number"
-            },
-            "start_price": {
-              "type": "number"
-            },
-            "load_quantity": {
-              "type": "integer"
-            },
-            "load_price": {
-              "type": "integer"
-            },
-            "drain_quantity": {
-              "type": "integer"
-            },
-            "drain_amount": {
-              "type": "integer"
-            },
-            "total_load_quantity": {
-              "type": "number"
-            },
-            "total_load_value": {
-              "type": "number"
-            },
-            "total_load_avg_price": {
-              "type": "number"
-            },
-            "total_avg_cost": {
-              "type": "integer"
-            },
-            "total_margin": {
-              "type": "integer"
-            },
-            "margin_liter": {
-              "type": "integer"
-            }
-          }
-        },
         "x-examples": {
           "Example 1": [
             {
@@ -13205,6 +13162,59 @@
               "margin_liter": 0
             }
           ]
+        },
+        "items": {
+          "type": "object",
+          "properties": {
+            "reference_date": {
+              "type": "string"
+            },
+            "article_id": {
+              "type": "integer"
+            },
+            "article_name": {
+              "type": "string"
+            },
+            "start_quantity": {
+              "type": "number"
+            },
+            "start_price": {
+              "type": "number"
+            },
+            "load_quantity": {
+              "type": "integer"
+            },
+            "load_value": {
+              "type": "integer",
+              "x-stoplight": {
+                "id": "l31rf6vec8053"
+              }
+            },
+            "drain_quantity": {
+              "type": "integer"
+            },
+            "drain_amount": {
+              "type": "integer"
+            },
+            "total_load_quantity": {
+              "type": "number"
+            },
+            "total_load_value": {
+              "type": "number"
+            },
+            "total_load_avg_price": {
+              "type": "number"
+            },
+            "total_avg_cost": {
+              "type": "integer"
+            },
+            "total_margin": {
+              "type": "integer"
+            },
+            "margin_liter": {
+              "type": "integer"
+            }
+          }
         }
       }
     },
