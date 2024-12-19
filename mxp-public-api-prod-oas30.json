@@ -2923,6 +2923,9 @@
             "description": "403 response",
             "content": {}
           },
+          "409": {
+            "description": "Conflict: When the operation could create a detail duplication (same logical key for 2 articles in the same invoice)"
+          },
           "500": {
             "description": "500 response",
             "content": {}
