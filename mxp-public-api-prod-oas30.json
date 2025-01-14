@@ -3,7 +3,7 @@
   "info": {
     "title": "Public API",
     "description": "ICAD Sistemi Public API documentation",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "contact": {}
   },
   "servers": [
@@ -4581,6 +4581,69 @@
           }
         ]
       }
+    },
+    "/v1/supplies/download": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "supplier_id": {
+                    "type": "integer"
+                  },
+                  "fuelstation_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "x-examples": {
+                  "Example 1": {
+                    "supplier_id": 15,
+                    "fuelstation_ids": [
+                      2764,
+                      2765
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "required": true,
+          "description": ""
+        },
+        "responses": {
+          "200": {
+            "description": "201 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "422": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ],
+        "description": "download data (force datacollection event for recalculate supplies)"
+      },
+      "parameters": []
     },
     "/v1/supplies/oil": {
       "post": {
