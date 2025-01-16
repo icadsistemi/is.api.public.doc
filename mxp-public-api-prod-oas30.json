@@ -9568,6 +9568,13 @@
             "is_outdoor": {
               "type": "boolean",
               "description": "True if this is an outdoor supply, false indoor"
+            },
+            "payment_code": {
+              "type": "string",
+              "x-stoplight": {
+                "id": "yve1zamcd85ux"
+              },
+              "description": "Payment code of the transaction (MP01 or MP08)"
             }
           }
         }
