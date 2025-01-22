@@ -6854,6 +6854,44 @@
         "description": ""
       },
       "parameters": []
+    },
+    "/v1/fuelstations/check": {
+      "parameters": [],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "is_code"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "supplier_code"
+          }
+        ],
+        "description": ""
+      }
     }
   },
   "components": {
