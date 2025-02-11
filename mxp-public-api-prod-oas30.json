@@ -3479,6 +3479,74 @@
         }
       }
     },
+    "/v1/payments/invoiced": {
+      "get": {
+        "summary": "",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/invoicedPaymentsOutputArray"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "operationId": "get-v1-payments-invoiced",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "is_code",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "supplier_code",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "start_date",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "end_date",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "products",
+            "description": "String containing comma separated product ids",
+            "required": true
+          }
+        ]
+      }
+    },
     "/v1/payments/periodicities": {
       "get": {
         "responses": {
@@ -4578,6 +4646,79 @@
         "security": [
           {
             "cognito": []
+          }
+        ]
+      }
+    },
+    "/v1/supplies/discounts": {
+      "get": {
+        "summary": "",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/discountsOutputArray"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "operationId": "get-v1-supplies-discounts",
+        "security": [
+          {
+            "cognito": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "is_code",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "supplier_code",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "start_date",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "end_date",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "products",
+            "description": "String containing comma separated product ids",
+            "required": true
           }
         ]
       }
@@ -13326,6 +13467,68 @@
               "type": "integer"
             }
           }
+        }
+      },
+      "discountsOutputArray": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "product_id": {
+              "type": "integer"
+            },
+            "reference_date": {
+              "type": "string"
+            },
+            "amount": {
+              "type": "number"
+            }
+          }
+        },
+        "x-examples": {
+          "Example 1": [
+            {
+              "product_id": 1,
+              "reference_date": "2024-10-03T02:00:00+02:00",
+              "amount": 0
+            },
+            {
+              "product_id": 2,
+              "reference_date": "2024-10-03T02:00:00+02:00",
+              "amount": 0.54
+            }
+          ]
+        }
+      },
+      "invoicedPaymentsOutputArray": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "product_id": {
+              "type": "integer"
+            },
+            "amount": {
+              "type": "number"
+            },
+            "reference_date": {
+              "type": "string"
+            }
+          }
+        },
+        "x-examples": {
+          "Example 1": [
+            {
+              "product_id": 1,
+              "amount": 20.01,
+              "reference_date": "2024-10-03T00:00:00Z"
+            },
+            {
+              "product_id": 2,
+              "amount": 29.46,
+              "reference_date": "2024-10-03T00:00:00Z"
+            }
+          ]
         }
       }
     },
