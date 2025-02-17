@@ -3501,7 +3501,6 @@
             "description": "Internal Server Error"
           }
         },
-        "operationId": "get-v1-payments-invoiced",
         "parameters": [
           {
             "schema": {
@@ -7003,7 +7002,14 @@
         "tags": [],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
           },
           "404": {
             "description": "Not Found"
@@ -7021,14 +7027,16 @@
               "type": "string"
             },
             "in": "query",
-            "name": "is_code"
+            "name": "is_code",
+            "required": true
           },
           {
             "schema": {
               "type": "string"
             },
             "in": "query",
-            "name": "supplier_code"
+            "name": "supplier_code",
+            "required": true
           }
         ],
         "description": ""
