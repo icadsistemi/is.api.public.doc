@@ -19,7 +19,7 @@ jobs:
           docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli-v3 generate \
           -i local/mxp-public-api-prod-oas30.json \
           -l html2 \
-          -o docs
+          -o local/docs
 
       - name: Commit new documentation
         run: |
