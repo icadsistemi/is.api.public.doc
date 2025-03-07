@@ -1278,7 +1278,8 @@
           {
             "cognito": []
           }
-        ]
+        ],
+        "operationId": ""
       }
     },
     "/v1/circuits": {
@@ -4015,7 +4016,6 @@
             "cognito": []
           }
         ],
-        "operationId": "",
         "description": "Get fuel coupons residues"
       }
     },
@@ -7039,6 +7039,92 @@
             "required": true
           }
         ],
+        "description": ""
+      }
+    },
+    "/v1/charges/payments": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/outputChargesPayments"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "description": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/inputChargesPayments"
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    },
+    "/v1/charges/amounts": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/outputChargesAmounts"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)",
+            "content": {}
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/inputChargesAmounts"
+              }
+            }
+          }
+        },
         "description": ""
       }
     }
@@ -13506,7 +13592,8 @@
               "amount": 0.54
             }
           ]
-        }
+        },
+        "title": ""
       },
       "invoicedPaymentsOutputArray": {
         "type": "array",
@@ -13538,6 +13625,150 @@
             }
           ]
         }
+      },
+      "inputChargesPayments": {
+        "title": "",
+        "x-stoplight": {
+          "id": "ici6820arsuzw"
+        },
+        "type": "object",
+        "description": "input model charges payments",
+        "properties": {
+          "fuelstation_id": {
+            "type": "integer",
+            "x-stoplight": {
+              "id": "u3qztfqe1nnws"
+            }
+          },
+          "start_datetime": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "y6g0v70j6znj9"
+            }
+          },
+          "end_datetime": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "bxyoe8ap7l7pl"
+            }
+          },
+          "products": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "c47arxq0zrqt0"
+            },
+            "items": {
+              "x-stoplight": {
+                "id": "pevvt7oi9pwbu"
+              },
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "outputChargesPayments": {
+        "title": "outputChargesPayments",
+        "x-stoplight": {
+          "id": "1pr77cuyeivsl"
+        },
+        "type": "object",
+        "description": "output model charges payments",
+        "properties": {
+          "product_id": {
+            "type": "integer",
+            "x-stoplight": {
+              "id": "ifm593xpcaxph"
+            }
+          },
+          "reference_date": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "i3c0v6wl1tlgv"
+            }
+          },
+          "card_name": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "h3ljf7nppsnm3"
+            }
+          },
+          "amount": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "burzgk4435jff"
+            },
+            "format": "float"
+          }
+        }
+      },
+      "inputChargesAmounts": {
+        "title": "inputChargesAmounts",
+        "x-stoplight": {
+          "id": "v4o24jqwchq2m"
+        },
+        "type": "object",
+        "description": "input model charges amounts",
+        "properties": {
+          "fuelstation_id": {
+            "type": "integer",
+            "x-stoplight": {
+              "id": "17l64rrm8js97"
+            }
+          },
+          "start_datetime": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "u1n0p9w0o1swv"
+            }
+          },
+          "end_datetime": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "kmbyyqfxx53g8"
+            }
+          },
+          "productsId": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "2axo9zkb2x2dn"
+            },
+            "items": {
+              "x-stoplight": {
+                "id": "8hkmckiea00a9"
+              },
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "outputChargesAmounts": {
+        "title": "outputChargesAmounts",
+        "x-stoplight": {
+          "id": "0zqcoi2wc1d3q"
+        },
+        "type": "object",
+        "properties": {
+          "product_id": {
+            "type": "integer",
+            "x-stoplight": {
+              "id": "qx6ausu43garu"
+            }
+          },
+          "reference_date": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "3z4yikx1i8vgh"
+            }
+          },
+          "amount": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "8f9bqezczediu"
+            },
+            "format": "float"
+          }
+        },
+        "description": "output model charges amounts"
       }
     },
     "securitySchemes": {
