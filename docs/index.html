@@ -3196,6 +3196,7 @@
   }
 };
             defs["discountsOutputArray"] = {
+  "title" : "",
   "type" : "array",
   "items" : {
     "$ref" : "#/components/schemas/discountsOutputArray_inner"
@@ -4794,6 +4795,86 @@
     }
   }
 };
+            defs["inputChargesAmounts"] = {
+  "title" : "inputChargesAmounts",
+  "type" : "object",
+  "properties" : {
+    "fuelstation_id" : {
+      "type" : "integer",
+      "x-stoplight" : {
+        "id" : "17l64rrm8js97"
+      }
+    },
+    "start_datetime" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "u1n0p9w0o1swv"
+      }
+    },
+    "end_datetime" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "kmbyyqfxx53g8"
+      }
+    },
+    "productsId" : {
+      "type" : "array",
+      "items" : {
+        "type" : "integer",
+        "x-stoplight" : {
+          "id" : "8hkmckiea00a9"
+        }
+      },
+      "x-stoplight" : {
+        "id" : "2axo9zkb2x2dn"
+      }
+    }
+  },
+  "description" : "input model charges amounts",
+  "x-stoplight" : {
+    "id" : "v4o24jqwchq2m"
+  }
+};
+            defs["inputChargesPayments"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "fuelstation_id" : {
+      "type" : "integer",
+      "x-stoplight" : {
+        "id" : "u3qztfqe1nnws"
+      }
+    },
+    "start_datetime" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "y6g0v70j6znj9"
+      }
+    },
+    "end_datetime" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "bxyoe8ap7l7pl"
+      }
+    },
+    "products" : {
+      "type" : "array",
+      "items" : {
+        "type" : "integer",
+        "x-stoplight" : {
+          "id" : "pevvt7oi9pwbu"
+        }
+      },
+      "x-stoplight" : {
+        "id" : "c47arxq0zrqt0"
+      }
+    }
+  },
+  "description" : "input model charges payments",
+  "x-stoplight" : {
+    "id" : "ici6820arsuzw"
+  }
+};
             defs["invoiceBodyOutputArray"] = {
   "title" : "invoice_body_output_array",
   "type" : "array",
@@ -5445,6 +5526,70 @@
       "type" : "string",
       "description" : "Payment type used. If the value is 'carta', an ICAD Sistemi card was used."
     }
+  }
+};
+            defs["outputChargesAmounts"] = {
+  "title" : "outputChargesAmounts",
+  "type" : "object",
+  "properties" : {
+    "product_id" : {
+      "type" : "integer",
+      "x-stoplight" : {
+        "id" : "qx6ausu43garu"
+      }
+    },
+    "reference_date" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "3z4yikx1i8vgh"
+      }
+    },
+    "amount" : {
+      "type" : "number",
+      "format" : "float",
+      "x-stoplight" : {
+        "id" : "8f9bqezczediu"
+      }
+    }
+  },
+  "description" : "output model charges amounts",
+  "x-stoplight" : {
+    "id" : "0zqcoi2wc1d3q"
+  }
+};
+            defs["outputChargesPayments"] = {
+  "title" : "outputChargesPayments",
+  "type" : "object",
+  "properties" : {
+    "product_id" : {
+      "type" : "integer",
+      "x-stoplight" : {
+        "id" : "ifm593xpcaxph"
+      }
+    },
+    "reference_date" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "i3c0v6wl1tlgv"
+      }
+    },
+    "card_name" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "h3ljf7nppsnm3"
+      }
+    },
+    "amount" : {
+      "type" : "number",
+      "format" : "float",
+      "x-stoplight" : {
+        "id" : "burzgk4435jff"
+      }
+    }
+  },
+  "description" : "output model charges payments",
+  "x-stoplight" : {
+    "id" : "1pr77cuyeivsl"
   }
 };
             defs["passiveInvoiceHeaderInput"] = {
@@ -7522,6 +7667,12 @@
                     </li>
                     <li data-group="Default" data-name="v1CategoriesPost" class="">
                       <a href="#api-Default-v1CategoriesPost">v1CategoriesPost</a>
+                    </li>
+                    <li data-group="Default" data-name="v1ChargesAmountsGet" class="">
+                      <a href="#api-Default-v1ChargesAmountsGet">v1ChargesAmountsGet</a>
+                    </li>
+                    <li data-group="Default" data-name="v1ChargesPaymentsGet" class="">
+                      <a href="#api-Default-v1ChargesPaymentsGet">v1ChargesPaymentsGet</a>
                     </li>
                     <li data-group="Default" data-name="v1CircuitsGet" class="">
                       <a href="#api-Default-v1CircuitsGet">v1CircuitsGet</a>
@@ -19463,6 +19614,745 @@ except ApiException as e:
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Default-v1ChargesAmountsGet">
+                      <article id="api-Default-v1ChargesAmountsGet-0" data-group="User" data-name="v1ChargesAmountsGet" data-version="0">
+                        <div class="pull-left">
+                          <h1>v1ChargesAmountsGet</h1>
+                          <p>Your GET endpoint</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/v1/charges/amounts</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-v1ChargesAmountsGet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-v1ChargesAmountsGet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-v1ChargesAmountsGet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-v1ChargesAmountsGet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-v1ChargesAmountsGet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-v1ChargesAmountsGet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-v1ChargesAmountsGet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-v1ChargesAmountsGet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-v1ChargesAmountsGet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-v1ChargesAmountsGet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-v1ChargesAmountsGet-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-v1ChargesAmountsGet-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+-H "Accept: application/json"\
+-H "Content-Type: application/json"\
+"https://mxp-public-api.prod.icadsistemi.com/v1/charges/amounts"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-v1ChargesAmountsGet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        
+        DefaultApi apiInstance = new DefaultApi();
+        InputChargesAmounts body = ; // InputChargesAmounts | 
+        try {
+            outputChargesAmounts result = apiInstance.v1ChargesAmountsGet(body);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#v1ChargesAmountsGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Default-v1ChargesAmountsGet-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        InputChargesAmounts body = ; // InputChargesAmounts | 
+        try {
+            outputChargesAmounts result = apiInstance.v1ChargesAmountsGet(body);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#v1ChargesAmountsGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-v1ChargesAmountsGet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-v1ChargesAmountsGet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">InputChargesAmounts *body = ; //  (optional)
+
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+// Your GET endpoint
+[apiInstance v1ChargesAmountsGetWith:body
+              completionHandler: ^(outputChargesAmounts output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-v1ChargesAmountsGet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var PublicApi = require('public_api');
+
+var api = new PublicApi.DefaultApi()
+var opts = { 
+  'body':  // {{InputChargesAmounts}} 
+};
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.v1ChargesAmountsGet(opts, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-v1ChargesAmountsGet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-v1ChargesAmountsGet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class v1ChargesAmountsGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new DefaultApi();
+            var body = new InputChargesAmounts(); // InputChargesAmounts |  (optional) 
+
+            try
+            {
+                // Your GET endpoint
+                outputChargesAmounts result = apiInstance.v1ChargesAmountsGet(body);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.v1ChargesAmountsGet: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-v1ChargesAmountsGet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiDefaultApi();
+$body = ; // InputChargesAmounts | 
+
+try {
+    $result = $api_instance->v1ChargesAmountsGet($body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->v1ChargesAmountsGet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-v1ChargesAmountsGet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $body = WWW::SwaggerClient::Object::InputChargesAmounts->new(); # InputChargesAmounts | 
+
+eval { 
+    my $result = $api_instance->v1ChargesAmountsGet(body => $body);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->v1ChargesAmountsGet: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-v1ChargesAmountsGet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+body =  # InputChargesAmounts |  (optional)
+
+try: 
+    # Your GET endpoint
+    api_response = api_instance.v1_charges_amounts_get(body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->v1ChargesAmountsGet: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">body </td>
+                                <td>
+                                
+                                
+                                <script>
+                                $(document).ready(function() {
+                                  var schemaWrapper = {
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/inputChargesAmounts"
+      }
+    }
+  }
+};
+                                  var schema = schemaWrapper.content["application/json"].schema;
+                                  if (schema.$ref != null) {
+                                    schema = defsParser.$refs.get(schema.$ref);
+                                  } else {
+                                    schemaWrapper.components = {};
+                                    schemaWrapper.components.schemas = Object.assign({}, defs);
+                                    $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                      console.log(err);
+                                    });
+                                  }
+                                
+                                  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+                                  var result = $('#d2e199_v1ChargesAmountsGet_body');
+                                  result.empty();
+                                  result.append(view.render());
+                                });
+                                </script>
+                                <div id="d2e199_v1ChargesAmountsGet_body"></div>
+                                </td>
+                                </tr>
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-v1ChargesAmountsGet-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-v1ChargesAmountsGet-200-schema">
+                                  <div id='responses-v1ChargesAmountsGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/outputChargesAmounts"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-v1ChargesAmountsGet-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-v1ChargesAmountsGet-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-v1ChargesAmountsGet-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 422 - Unprocessable Entity (WebDAV) </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Default-v1ChargesPaymentsGet">
+                      <article id="api-Default-v1ChargesPaymentsGet-0" data-group="User" data-name="v1ChargesPaymentsGet" data-version="0">
+                        <div class="pull-left">
+                          <h1>v1ChargesPaymentsGet</h1>
+                          <p>Your GET endpoint</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/v1/charges/payments</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-v1ChargesPaymentsGet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-v1ChargesPaymentsGet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-v1ChargesPaymentsGet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-v1ChargesPaymentsGet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-v1ChargesPaymentsGet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-v1ChargesPaymentsGet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-v1ChargesPaymentsGet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-v1ChargesPaymentsGet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-v1ChargesPaymentsGet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-v1ChargesPaymentsGet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-v1ChargesPaymentsGet-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-v1ChargesPaymentsGet-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+-H "Accept: application/json"\
+-H "Content-Type: application/json"\
+"https://mxp-public-api.prod.icadsistemi.com/v1/charges/payments"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-v1ChargesPaymentsGet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        
+        DefaultApi apiInstance = new DefaultApi();
+        InputChargesPayments body = ; // InputChargesPayments | 
+        try {
+            outputChargesPayments result = apiInstance.v1ChargesPaymentsGet(body);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#v1ChargesPaymentsGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Default-v1ChargesPaymentsGet-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        InputChargesPayments body = ; // InputChargesPayments | 
+        try {
+            outputChargesPayments result = apiInstance.v1ChargesPaymentsGet(body);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#v1ChargesPaymentsGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-v1ChargesPaymentsGet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-v1ChargesPaymentsGet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">InputChargesPayments *body = ; //  (optional)
+
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+// Your GET endpoint
+[apiInstance v1ChargesPaymentsGetWith:body
+              completionHandler: ^(outputChargesPayments output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-v1ChargesPaymentsGet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var PublicApi = require('public_api');
+
+var api = new PublicApi.DefaultApi()
+var opts = { 
+  'body':  // {{InputChargesPayments}} 
+};
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.v1ChargesPaymentsGet(opts, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-v1ChargesPaymentsGet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-v1ChargesPaymentsGet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class v1ChargesPaymentsGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new DefaultApi();
+            var body = new InputChargesPayments(); // InputChargesPayments |  (optional) 
+
+            try
+            {
+                // Your GET endpoint
+                outputChargesPayments result = apiInstance.v1ChargesPaymentsGet(body);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.v1ChargesPaymentsGet: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-v1ChargesPaymentsGet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiDefaultApi();
+$body = ; // InputChargesPayments | 
+
+try {
+    $result = $api_instance->v1ChargesPaymentsGet($body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->v1ChargesPaymentsGet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-v1ChargesPaymentsGet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $body = WWW::SwaggerClient::Object::InputChargesPayments->new(); # InputChargesPayments | 
+
+eval { 
+    my $result = $api_instance->v1ChargesPaymentsGet(body => $body);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->v1ChargesPaymentsGet: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-v1ChargesPaymentsGet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+body =  # InputChargesPayments |  (optional)
+
+try: 
+    # Your GET endpoint
+    api_response = api_instance.v1_charges_payments_get(body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->v1ChargesPaymentsGet: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">body </td>
+                                <td>
+                                
+                                
+                                <script>
+                                $(document).ready(function() {
+                                  var schemaWrapper = {
+  "description" : "",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/inputChargesPayments"
+      }
+    }
+  }
+};
+                                  var schema = schemaWrapper.content["application/json"].schema;
+                                  if (schema.$ref != null) {
+                                    schema = defsParser.$refs.get(schema.$ref);
+                                  } else {
+                                    schemaWrapper.components = {};
+                                    schemaWrapper.components.schemas = Object.assign({}, defs);
+                                    $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                      console.log(err);
+                                    });
+                                  }
+                                
+                                  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+                                  var result = $('#d2e199_v1ChargesPaymentsGet_body');
+                                  result.empty();
+                                  result.append(view.render());
+                                });
+                                </script>
+                                <div id="d2e199_v1ChargesPaymentsGet_body"></div>
+                                </td>
+                                </tr>
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-v1ChargesPaymentsGet-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-v1ChargesPaymentsGet-200-schema">
+                                  <div id='responses-v1ChargesPaymentsGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/outputChargesPayments"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-v1ChargesPaymentsGet-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-v1ChargesPaymentsGet-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-v1ChargesPaymentsGet-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 422 - Unprocessable Entity (WebDAV) </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-v1ChargesPaymentsGet-422-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-v1ChargesPaymentsGet-422-schema">
+                                  <div id='responses-v1ChargesPaymentsGet-422-schema-422' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Unprocessable Entity (WebDAV)",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "type" : "object",
+        "properties" : { },
+        "x-content-type" : "application/json"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-v1ChargesPaymentsGet-422-schema-data').val(stringify(schema));
+                                        var result = $('#responses-v1ChargesPaymentsGet-422-schema-422');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-v1ChargesPaymentsGet-422-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-v1ChargesPaymentsGet-500-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-v1ChargesPaymentsGet-500-schema">
+                                  <div id='responses-v1ChargesPaymentsGet-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Internal Server Error",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "type" : "object",
+        "properties" : { },
+        "x-content-type" : "application/json"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-v1ChargesPaymentsGet-500-schema-data').val(stringify(schema));
+                                        var result = $('#responses-v1ChargesPaymentsGet-500-schema-500');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-v1ChargesPaymentsGet-500-schema-data' type='hidden' value=''></input>
+                                </div>
                             </div>
 
                         </article>
