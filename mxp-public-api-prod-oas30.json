@@ -7066,7 +7066,7 @@
             "content": {}
           }
         },
-        "description": "",
+        "description": "returns the amounts paid on the PV, for the products and period received as input. The output is grouped by ProductId, ReferenceDate, and CardName (payment method), and performs a Sum on Amount",
         "requestBody": {
           "content": {
             "application/json": {
@@ -7111,7 +7111,7 @@
             }
           }
         },
-        "description": ""
+        "description": "returns the amounts disbursed on the PV, related to the products and period received as input. The output is grouped by ProductId and ReferenceDate, and performs a Sum on Amount"
       }
     }
   },
