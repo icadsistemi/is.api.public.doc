@@ -11657,46 +11657,23 @@
         "items": {
           "type": "object",
           "properties": {
-            "invoice_notes": {
-              "type": "string",
-              "description": "Invoice custom notes"
+            "id": {
+              "type": "integer",
+              "description": "Unique customer identifier"
             },
             "country": {
               "type": "string",
               "description": "Company country name"
             },
-            "notes": {
+            "province": {
+              "maxLength": 2,
               "type": "string",
-              "description": "Optional notes"
+              "description": "Province code"
             },
             "vat_number": {
               "maxLength": 20,
               "type": "string",
               "description": "Company vat number"
-            },
-            "notify_recharge": {
-              "type": "boolean",
-              "description": "True if the system sends an email to the customer to notify a recharge operation, false otherwise"
-            },
-            "fee": {
-              "type": "boolean",
-              "description": "ECommerce customer fee"
-            },
-            "discount_level": {
-              "type": "integer",
-              "description": "Customer discount level"
-            },
-            "house_number": {
-              "type": "string",
-              "description": "Company house number"
-            },
-            "max_period_credit": {
-              "type": "number",
-              "description": "Max credit"
-            },
-            "charge_discount": {
-              "type": "number",
-              "description": "Discount amount for recharging operations"
             },
             "zip_code": {
               "maxLength": 6,
@@ -11710,46 +11687,29 @@
               "description": "Company pec",
               "format": "email"
             },
-            "province": {
-              "maxLength": 2,
+            "is_without_vat": {
+              "type": "boolean",
+              "description": "If True, the customer has no VAT number"
+            },
+            "name": {
+              "maxLength": 81,
               "type": "string",
-              "description": "Province code"
+              "description": "Company complete name"
             },
-            "has_driver_request": {
-              "type": "boolean",
-              "description": "True if the customer has to type the driver code when performing a transaction, false otherwise"
+            "sdi_code": {
+              "maxLength": 7,
+              "minLength": 6,
+              "type": "string",
+              "description": "SDI code used to receive electronic invoices"
             },
-            "ignore_payment_mode_on_pos": {
-              "type": "boolean",
-              "description": "If true ignores customer payment mode for POS recharges"
+            "phone_number": {
+              "maxLength": 50,
+              "type": "string",
+              "description": "Company phone number"
             },
             "vat_id": {
               "type": "integer",
               "description": "Customer vat"
-            },
-            "oil_iban": {
-              "type": "string",
-              "description": "If not empty, oil invoices uses this iban if needed"
-            },
-            "id": {
-              "type": "integer",
-              "description": "Unique customer identifier"
-            },
-            "has_driver_check": {
-              "type": "boolean",
-              "description": "True if the system check the driver code (it has to be an authorizative PIN), false otherwise"
-            },
-            "app_can_see_balance": {
-              "type": "boolean",
-              "description": "True if in the Selfnet mobile app user can see the customer credit, false otherwise"
-            },
-            "merge_invoices": {
-              "type": "boolean",
-              "description": "If True, OIL and NON OIL invoices are merged (where possible), false otherwise"
-            },
-            "is_without_vat": {
-              "type": "boolean",
-              "description": "If True, the customer has no VAT number"
             },
             "fax_number": {
               "maxLength": 50,
@@ -11790,136 +11750,19 @@
                 }
               }
             },
-            "residue_type": {
-              "type": "integer",
-              "description": "Shows on the receipt card or customer residue"
-            },
-            "stamp_duty": {
-              "type": "boolean",
-              "description": "If true invoices have stamp duty when numbers permits it"
-            },
-            "exposure": {
-              "type": "number",
-              "description": "Issued invoices still not payed"
-            },
-            "name": {
-              "maxLength": 81,
-              "type": "string",
-              "description": "Company complete name"
-            },
-            "sdi_code": {
-              "maxLength": 7,
-              "minLength": 6,
-              "type": "string",
-              "description": "SDI code used to receive electronic invoices"
-            },
-            "phone_number": {
-              "maxLength": 50,
-              "type": "string",
-              "description": "Company phone number"
-            },
-            "supplier_id": {
-              "type": "integer",
-              "description": "Supplier owner of customer data (not set for I&GO customers)"
-            },
-            "discount_group_id": {
-              "type": "integer",
-              "description": "Discount group identifier"
-            },
             "country_id": {
               "type": "integer",
               "description": "Company country id"
-            },
-            "non_oil_iban": {
-              "type": "string",
-              "description": "If not empty, non oil invoices uses this iban if needed"
-            },
-            "birthday": {
-              "type": "string",
-              "description": "Customer birthday date",
-              "format": "date-time"
-            },
-            "notify_2": {
-              "type": "boolean",
-              "description": "True if the system sends an email to secondary customer email address, false otherwise.<br/>If the field notify (or the field notify_recharge) is set to False, this value is ignored."
-            },
-            "code": {
-              "maxLength": 6,
-              "minLength": 4,
-              "type": "string",
-              "description": "Company code"
-            },
-            "notify_3": {
-              "type": "boolean",
-              "description": "True if the system sends an email to third customer email address, false otherwise.<br/>If the field notify (or the field notify_recharge) is set to False, this value is ignored."
-            },
-            "gender": {
-              "type": "string",
-              "description": "Customer gender"
-            },
-            "has_customer_recharge": {
-              "type": "boolean",
-              "description": "True if the recharge operations increase the customer credit,False if they increase the credit of the single involved card."
             },
             "city": {
               "maxLength": 30,
               "type": "string",
               "description": "Company headquarter city"
             },
-            "notify_1": {
-              "type": "boolean",
-              "description": "True if the system sends an email to main customer email address, false otherwise.<br/>If the field notify (or the field notify_recharge) is set to False, this value is ignored."
-            },
-            "adm_code": {
-              "maxLength": 7,
-              "minLength": 6,
-              "type": "string",
-              "description": "Company sdi passive code"
-            },
             "fiscal_code": {
               "maxLength": 20,
               "type": "string",
               "description": "Company fiscal code"
-            },
-            "nexi_configuration": {
-              "type": "string",
-              "description": "ECommerce configuration"
-            },
-            "notify": {
-              "type": "boolean",
-              "description": "True if the system sends an email to the customer to notify his operations, false otherwise"
-            },
-            "article_id": {
-              "type": "integer",
-              "description": "Article id to add costs to the customer invoice"
-            },
-            "is_enabled": {
-              "type": "boolean",
-              "description": "True if customer is active, false otherwise"
-            },
-            "has_account_balance": {
-              "type": "boolean",
-              "description": "True if the system generates the account balance for this customer, false otherwise"
-            },
-            "enabled_vehicles": {
-              "type": "array",
-              "description": "Enabled vehicles ids, lookup for vehicle details using /vehicles/{id} endpoint",
-              "items": {
-                "type": "integer"
-              }
-            },
-            "electronic_invoice": {
-              "type": "boolean",
-              "description": "True if the customer use the ICAD Sistemi electronic invoice"
-            },
-            "start_invoice_date": {
-              "type": "string",
-              "description": "For Selfnet customer, represents the electronic invoice starting dateIf NULL, invoices start when the field electronic_invoice is activated",
-              "format": "date"
-            },
-            "payment_terms_id": {
-              "type": "integer",
-              "description": "Payment terms identifier. It is used only for Selfnet customers<br/> Possible values are:<ul><li>2\t5 gg data fattura</li><li>3\t15 gg data fattura</li><li>4\t30 gg fine mese data fattura</li><li>5\t60 gg fine mese data fattura</li><li>6\t90 gg fine mese data fattura</li><li>22\tData Fattura</li><li>23\t25 gg data fattura</li><li>26\t30 gg data fattura</li><li>27\t45 gg data fattura</li><li>28\t35 gg data fattura</li><li>29\t40 gg data fattura</li><li>30\t60 gg fine mese + 12gg</li><li>31\t30 gg fine mese + 12gg</li><li>32\t20 gg data fattura</li><li>33\t30 gg fine mese +  8gg</li><li>34\t60 gg fine mese + 10gg</li><li>35\t30 gg fine mese +  5gg</li><li>36\t30 gg fine mese + 10gg</li><li>37\t60 gg fine mese + 15gg</li><li>38\t10 gg data fattura</li><li>39\t30 gg fine mese + 15gg</li><li>40\t60 gg fine mese +  5gg</li><li>41\t60 gg data fattura</li><li>42\t90 gg fine mese + 10gg</li><li>43\t90 gg data fattura</li></ul>"
             },
             "email": {
               "maxLength": 100,
@@ -11932,36 +11775,9 @@
               "type": "string",
               "description": "Company address"
             },
-            "payment_mode_id": {
-              "type": "string",
-              "description": "Payment mode identifier.<br/>Possible values are:<ul><li><strong>MP01</strong>: Contanti</li><li><strong>MP02</strong>: Assegno</li><li><strong>MP03</strong>: assegno circolare</li><li><strong>MP04</strong>: contanti presso Tesoreria</li><li><strong>MP05</strong>: Bonifico</li><li><strong>MP06</strong>: vaglia cambiario</li><li><strong>MP07</strong>: bollettino bancario</li><li><strong>MP08</strong>: Carta di pagamento</li><li><strong>MP09</strong>: RID</li><li><strong>MP10</strong>: RID utenze</li><li><strong>MP11</strong>: RID veloce</li><li><strong>MP12</strong>: Ricevuta bancaria</li><li><strong>MP13</strong>: MAV</li><li><strong>MP14</strong>: quietanza erario stato</li><li><strong>MP15</strong>: giroconto su conti di contabilità speciale</li><li><strong>MP16</strong>: domiciliazione bancaria</li><li><strong>MP17</strong>: domiciliazione postale</li><li><strong>MP18</strong>: Bollettino di c/c postale</li><li><strong>MP19</strong>: SEPA Direct Debit</li><li><strong>MP20</strong>: SEPA Direct Debit CORE</li><li><strong>MP21</strong>: SEPA Direct Debit B2B</li><li><strong>MP22</strong>: Trattenuta su somme già riscosse</li><li><strong>MP23</strong>: PagoPA</li></ul>"
-            },
-            "has_km_request": {
-              "type": "boolean",
-              "description": "True if the customer has to type the km value when performing a transaction, false otherwise"
-            },
-            "has_invoice": {
-              "type": "boolean",
-              "description": "True if the customer needs to invoice his transactions, false otherwise"
-            },
-            "has_km_check": {
-              "type": "boolean",
-              "description": "True if the system check the value of the field has_km_request, false otherwise"
-            },
-            "price_list_id": {
-              "type": "integer",
-              "description": "Price list identifier linked to this customer"
-            },
             "payment_periodicity_id": {
               "type": "string",
               "description": "Payment periodicity identifier.<br/>Possible values are:<ul><li><strong>N</strong> Immediata (both for Invoice&GO and Selfnet customers)</li><li><strong>W</strong> Settimanale (only for Selfnet customers)</li><li><strong>D</strong> \tDecade (only for Selfnet customers)</li><li><strong>F</strong> \tQuindicinale (only for Selfnet customers)</li><li><strong>M</strong> \tMensile (both for Invoice&GO and Selfnet customers)</li><li><strong>B</strong> \tBimestrale (only for Selfnet customers)</li><li><strong>Q</strong> \tTrimestrale (only for Selfnet customers)</li><li><strong>X</strong> \tNessuna (only for Selfnet customers)</li></ul>"
-            },
-            "enabled_articles": {
-              "type": "array",
-              "description": "Enabled articles ids, lookup for article details using /articles/{id} endpoint",
-              "items": {
-                "type": "integer"
-              }
             },
             "has_split_payment": {
               "type": "boolean",
