@@ -1919,6 +1919,104 @@
         ]
       }
     },
+    "/v1/customers/search/byName": {
+      "get": {
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "customers": [
+                        {
+                          "id": 421639,
+                          "name": "CLIENTE PROVA 2",
+                          "vat_number": "12345678934",
+                          "fiscal_code": "12345678934",
+                          "sdi_code": "",
+                          "pec": "test@testpec.com",
+                          "address": "Via Olivetti 30",
+                          "city": "Volvera",
+                          "province": "TO",
+                          "zip_code": "10040",
+                          "phone_number": "0111234567",
+                          "email": "test1@test.com",
+                          "payment_periodicity_id": 30,
+                          "has_split_payment": true,
+                          "is_no_profit": false,
+                          "country_id": 1
+                        },
+                        {
+                          "id": 420054,
+                          "name": "Prova",
+                          "vat_number": "08283010967",
+                          "fiscal_code": "08283010967",
+                          "sdi_code": "",
+                          "pec": "pec@p.it",
+                          "address": "  prova prova",
+                          "city": "milano",
+                          "province": "Mi",
+                          "zip_code": "20019",
+                          "phone_number": "351200000",
+                          "email": "mail@mail.com",
+                          "payment_periodicity_id": 30,
+                          "has_split_payment": true,
+                          "is_no_profit": false,
+                          "country_id": 1
+                        }
+                      ]
+                    }
+                  },
+                  "properties": {
+                    "customers": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CustomerByNameOutput"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "content": {}
+          },
+          "401": {
+            "description": "401 response",
+            "content": {}
+          },
+          "403": {
+            "description": "403 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ]
+      },
+      "parameters": []
+    },
     "/v1/fuelcoupons/{id}/unlock/history": {
       "get": {
         "parameters": [
@@ -13571,6 +13669,108 @@
           }
         },
         "description": "output model charges amounts"
+      },
+      "CustomerByNameOutput": {
+        "title": "CustomerByNameOutput",
+        "x-stoplight": {
+          "id": "bt6ysov11n2q2"
+        },
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "jisg5x35iecdz"
+            }
+          },
+          "vat_number": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "l1ynwslqgdtcc"
+            }
+          },
+          "fiscal_code": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "8sk1zb84liesy"
+            }
+          },
+          "sdi_code": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "y7zmxepsnweec"
+            }
+          },
+          "pec": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "5wa0lpd1mb7wf"
+            }
+          },
+          "address": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "091pzxraciq10"
+            }
+          },
+          "city": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "dm2ecbnloxtp5"
+            }
+          },
+          "province": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "is7h7kuqyn4az"
+            }
+          },
+          "zip_code": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "i8zqs2u39mbdw"
+            }
+          },
+          "phone_number": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "u2obdpkn8wr0y"
+            }
+          },
+          "email": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "8lcmsab0utp8l"
+            }
+          },
+          "payment_periodicity_id": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "tzjkb8vowbkcr"
+            }
+          },
+          "has_split_payment": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "q4s6fobs14uqx"
+            }
+          },
+          "is_no_profit": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "c49zajwps2ji9"
+            }
+          },
+          "country_id": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "jh0q7bxan0niy"
+            }
+          }
+        }
       }
     },
     "securitySchemes": {
