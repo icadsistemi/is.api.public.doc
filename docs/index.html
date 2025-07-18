@@ -2270,6 +2270,108 @@
     }
   }
 };
+            defs["CustomerByNameOutput"] = {
+  "title" : "CustomerByNameOutput",
+  "type" : "object",
+  "properties" : {
+    "id" : {
+      "type" : "number"
+    },
+    "name" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "jisg5x35iecdz"
+      }
+    },
+    "vat_number" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "l1ynwslqgdtcc"
+      }
+    },
+    "fiscal_code" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "8sk1zb84liesy"
+      }
+    },
+    "sdi_code" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "y7zmxepsnweec"
+      }
+    },
+    "pec" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "5wa0lpd1mb7wf"
+      }
+    },
+    "address" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "091pzxraciq10"
+      }
+    },
+    "city" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "dm2ecbnloxtp5"
+      }
+    },
+    "province" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "is7h7kuqyn4az"
+      }
+    },
+    "zip_code" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "i8zqs2u39mbdw"
+      }
+    },
+    "phone_number" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "u2obdpkn8wr0y"
+      }
+    },
+    "email" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "8lcmsab0utp8l"
+      }
+    },
+    "payment_periodicity_id" : {
+      "type" : "number",
+      "x-stoplight" : {
+        "id" : "tzjkb8vowbkcr"
+      }
+    },
+    "has_split_payment" : {
+      "type" : "boolean",
+      "x-stoplight" : {
+        "id" : "q4s6fobs14uqx"
+      }
+    },
+    "is_no_profit" : {
+      "type" : "boolean",
+      "x-stoplight" : {
+        "id" : "c49zajwps2ji9"
+      }
+    },
+    "country_id" : {
+      "type" : "number",
+      "x-stoplight" : {
+        "id" : "jh0q7bxan0niy"
+      }
+    }
+  },
+  "x-stoplight" : {
+    "id" : "bt6ysov11n2q2"
+  }
+};
             defs["customerInput"] = {
   "title" : "customer_input",
   "type" : "object",
@@ -4458,6 +4560,56 @@
             defs["inline_response_200_3"] = {
   "type" : "object",
   "properties" : {
+    "customers" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/components/schemas/CustomerByNameOutput"
+      }
+    }
+  },
+  "x-examples" : {
+    "Example 1" : {
+      "customers" : [ {
+        "id" : 421639,
+        "name" : "CLIENTE PROVA 2",
+        "vat_number" : "12345678934",
+        "fiscal_code" : "12345678934",
+        "sdi_code" : "",
+        "pec" : "test@testpec.com",
+        "address" : "Via Olivetti 30",
+        "city" : "Volvera",
+        "province" : "TO",
+        "zip_code" : "10040",
+        "phone_number" : "0111234567",
+        "email" : "test1@test.com",
+        "payment_periodicity_id" : 30,
+        "has_split_payment" : true,
+        "is_no_profit" : false,
+        "country_id" : 1
+      }, {
+        "id" : 420054,
+        "name" : "Prova",
+        "vat_number" : "08283010967",
+        "fiscal_code" : "08283010967",
+        "sdi_code" : "",
+        "pec" : "pec@p.it",
+        "address" : "  prova prova",
+        "city" : "milano",
+        "province" : "Mi",
+        "zip_code" : "20019",
+        "phone_number" : "351200000",
+        "email" : "mail@mail.com",
+        "payment_periodicity_id" : 30,
+        "has_split_payment" : true,
+        "is_no_profit" : false,
+        "country_id" : 1
+      } ]
+    }
+  }
+};
+            defs["inline_response_200_4"] = {
+  "type" : "object",
+  "properties" : {
     "reference_date" : {
       "type" : "string"
     },
@@ -4544,7 +4696,7 @@
     }
   }
 };
-            defs["inline_response_200_4"] = {
+            defs["inline_response_200_5"] = {
   "type" : "object",
   "properties" : {
     "fuelstation_id" : {
@@ -7522,6 +7674,9 @@
                     </li>
                     <li data-group="Default" data-name="v1CustomersPost" class="">
                       <a href="#api-Default-v1CustomersPost">v1CustomersPost</a>
+                    </li>
+                    <li data-group="Default" data-name="v1CustomersSearchByNameGet" class="">
+                      <a href="#api-Default-v1CustomersSearchByNameGet">v1CustomersSearchByNameGet</a>
                     </li>
                     <li data-group="Default" data-name="v1CustomersSearchGet" class="">
                       <a href="#api-Default-v1CustomersSearchGet">v1CustomersSearchGet</a>
@@ -23736,6 +23891,354 @@ except ApiException as e:
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 400 - 400 response </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 401 - 401 response </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 403 - 403 response </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - 500 response </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Default-v1CustomersSearchByNameGet">
+                      <article id="api-Default-v1CustomersSearchByNameGet-0" data-group="User" data-name="v1CustomersSearchByNameGet" data-version="0">
+                        <div class="pull-left">
+                          <h1>v1CustomersSearchByNameGet</h1>
+                          <p></p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/v1/customers/search/byName</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-v1CustomersSearchByNameGet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-v1CustomersSearchByNameGet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-v1CustomersSearchByNameGet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-v1CustomersSearchByNameGet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-v1CustomersSearchByNameGet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-v1CustomersSearchByNameGet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-v1CustomersSearchByNameGet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-v1CustomersSearchByNameGet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-v1CustomersSearchByNameGet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-v1CustomersSearchByNameGet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-v1CustomersSearchByNameGet-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-v1CustomersSearchByNameGet-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+\
+-H "Accept: application/json"\
+"https://mxp-public-api.prod.icadsistemi.com/v1/customers/search/byName?name="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-v1CustomersSearchByNameGet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure OAuth2 access token for authorization: cognito
+        OAuth cognito = (OAuth) defaultClient.getAuthentication("cognito");
+        cognito.setAccessToken("YOUR ACCESS TOKEN");
+
+        DefaultApi apiInstance = new DefaultApi();
+        String name = name_example; // String | 
+        try {
+            inline_response_200_3 result = apiInstance.v1CustomersSearchByNameGet(name);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#v1CustomersSearchByNameGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Default-v1CustomersSearchByNameGet-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        String name = name_example; // String | 
+        try {
+            inline_response_200_3 result = apiInstance.v1CustomersSearchByNameGet(name);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#v1CustomersSearchByNameGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-v1CustomersSearchByNameGet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-v1CustomersSearchByNameGet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure OAuth2 access token for authorization: (authentication scheme: cognito)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+String *name = name_example; // 
+
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+[apiInstance v1CustomersSearchByNameGetWith:name
+              completionHandler: ^(inline_response_200_3 output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-v1CustomersSearchByNameGet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var PublicApi = require('public_api');
+var defaultClient = PublicApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: cognito
+var cognito = defaultClient.authentications['cognito'];
+cognito.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new PublicApi.DefaultApi()
+var name = name_example; // {{String}} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.v1CustomersSearchByNameGet(name, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-v1CustomersSearchByNameGet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-v1CustomersSearchByNameGet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class v1CustomersSearchByNameGetExample
+    {
+        public void main()
+        {
+
+            // Configure OAuth2 access token for authorization: cognito
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new DefaultApi();
+            var name = name_example;  // String | 
+
+            try
+            {
+                inline_response_200_3 result = apiInstance.v1CustomersSearchByNameGet(name);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.v1CustomersSearchByNameGet: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-v1CustomersSearchByNameGet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: cognito
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new Swagger\Client\ApiDefaultApi();
+$name = name_example; // String | 
+
+try {
+    $result = $api_instance->v1CustomersSearchByNameGet($name);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->v1CustomersSearchByNameGet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-v1CustomersSearchByNameGet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+# Configure OAuth2 access token for authorization: cognito
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $name = name_example; # String | 
+
+eval { 
+    my $result = $api_instance->v1CustomersSearchByNameGet(name => $name);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->v1CustomersSearchByNameGet: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-v1CustomersSearchByNameGet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: cognito
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = name_example # String | 
+
+try: 
+    api_response = api_instance.v1_customers_search_by_name_get(name)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->v1CustomersSearchByNameGet: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">name*</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_v1CustomersSearchByNameGet_name">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                            </div>
+                                                <div class="inner required">
+                                                    Required
+                                                </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - 200 response </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-v1CustomersSearchByNameGet-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-v1CustomersSearchByNameGet-200-schema">
+                                  <div id='responses-v1CustomersSearchByNameGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "200 response",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/inline_response_200_3"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-v1CustomersSearchByNameGet-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-v1CustomersSearchByNameGet-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-v1CustomersSearchByNameGet-200-schema-data' type='hidden' value=''></input>
+                                </div>
                             </div>
 
                             <h3> Status: 400 - 400 response </h3>
@@ -46309,7 +46812,7 @@ public class DefaultApiExample {
         String dateStart = dateStart_example; // String | Start date time on unix time format
         String dateEnd = dateEnd_example; // String | Ebd date time on unix time format
         try {
-            array[inline_response_200_4] result = apiInstance.v1TanksManualstocksTrendGet(fuelstationIds, dateStart, dateEnd);
+            array[inline_response_200_5] result = apiInstance.v1TanksManualstocksTrendGet(fuelstationIds, dateStart, dateEnd);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#v1TanksManualstocksTrendGet");
@@ -46330,7 +46833,7 @@ public class DefaultApiExample {
         String dateStart = dateStart_example; // String | Start date time on unix time format
         String dateEnd = dateEnd_example; // String | Ebd date time on unix time format
         try {
-            array[inline_response_200_4] result = apiInstance.v1TanksManualstocksTrendGet(fuelstationIds, dateStart, dateEnd);
+            array[inline_response_200_5] result = apiInstance.v1TanksManualstocksTrendGet(fuelstationIds, dateStart, dateEnd);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#v1TanksManualstocksTrendGet");
@@ -46353,7 +46856,7 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 [apiInstance v1TanksManualstocksTrendGetWith:fuelstationIds
     dateStart:dateStart
     dateEnd:dateEnd
-              completionHandler: ^(array[inline_response_200_4] output, NSError* error) {
+              completionHandler: ^(array[inline_response_200_5] output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -46407,7 +46910,7 @@ namespace Example
 
             try
             {
-                array[inline_response_200_4] result = apiInstance.v1TanksManualstocksTrendGet(fuelstationIds, dateStart, dateEnd);
+                array[inline_response_200_5] result = apiInstance.v1TanksManualstocksTrendGet(fuelstationIds, dateStart, dateEnd);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -46580,7 +47083,7 @@ except ApiException as e:
       "schema" : {
         "type" : "array",
         "items" : {
-          "$ref" : "#/components/schemas/inline_response_200_4"
+          "$ref" : "#/components/schemas/inline_response_200_5"
         },
         "x-examples" : {
           "Example 1" : [ {
@@ -48093,7 +48596,7 @@ public class DefaultApiExample {
         String dateEnd = dateEnd_example; // String | Unix time format
         String isAnalysis = isAnalysis_example; // String | boolean value for get analysis data if true or history data if false
         try {
-            array[inline_response_200_3] result = apiInstance.v1TanksReconciliationsDataGet(fuelstationId, dateStart, dateEnd, isAnalysis);
+            array[inline_response_200_4] result = apiInstance.v1TanksReconciliationsDataGet(fuelstationId, dateStart, dateEnd, isAnalysis);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#v1TanksReconciliationsDataGet");
@@ -48115,7 +48618,7 @@ public class DefaultApiExample {
         String dateEnd = dateEnd_example; // String | Unix time format
         String isAnalysis = isAnalysis_example; // String | boolean value for get analysis data if true or history data if false
         try {
-            array[inline_response_200_3] result = apiInstance.v1TanksReconciliationsDataGet(fuelstationId, dateStart, dateEnd, isAnalysis);
+            array[inline_response_200_4] result = apiInstance.v1TanksReconciliationsDataGet(fuelstationId, dateStart, dateEnd, isAnalysis);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#v1TanksReconciliationsDataGet");
@@ -48140,7 +48643,7 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
     dateStart:dateStart
     dateEnd:dateEnd
     isAnalysis:isAnalysis
-              completionHandler: ^(array[inline_response_200_3] output, NSError* error) {
+              completionHandler: ^(array[inline_response_200_4] output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -48197,7 +48700,7 @@ namespace Example
 
             try
             {
-                array[inline_response_200_3] result = apiInstance.v1TanksReconciliationsDataGet(fuelstationId, dateStart, dateEnd, isAnalysis);
+                array[inline_response_200_4] result = apiInstance.v1TanksReconciliationsDataGet(fuelstationId, dateStart, dateEnd, isAnalysis);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -48389,7 +48892,7 @@ except ApiException as e:
       "schema" : {
         "type" : "array",
         "items" : {
-          "$ref" : "#/components/schemas/inline_response_200_3"
+          "$ref" : "#/components/schemas/inline_response_200_4"
         },
         "x-examples" : {
           "Example 1" : [ {
