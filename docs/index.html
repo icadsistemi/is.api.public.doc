@@ -7364,6 +7364,79 @@
   },
   "description" : "User privacy data settings"
 };
+            defs["userProfileInput"] = {
+  "title" : "userProfileInput",
+  "type" : "object",
+  "properties" : {
+    "user_profile" : {
+      "$ref" : "#/components/schemas/userProfileOutput_user_profile"
+    }
+  },
+  "x-stoplight" : {
+    "id" : "6pgawigyqvdbv"
+  }
+};
+            defs["userProfileOutput"] = {
+  "title" : "userProfileOutput",
+  "type" : "object",
+  "properties" : {
+    "user_profile" : {
+      "$ref" : "#/components/schemas/userProfileOutput_user_profile"
+    }
+  },
+  "x-stoplight" : {
+    "id" : "sa77f9ud1t2gp"
+  }
+};
+            defs["userProfileOutput_user_profile"] = {
+  "type" : "object",
+  "properties" : {
+    "username" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "7vsm4o6kuf6s0"
+      }
+    },
+    "favourite_customers" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/components/schemas/userProfileOutput_user_profile_favourite_customers"
+      },
+      "x-stoplight" : {
+        "id" : "ilug8xc654x1d"
+      }
+    }
+  }
+};
+            defs["userProfileOutput_user_profile_favourite_customers"] = {
+  "type" : "object",
+  "properties" : {
+    "id" : {
+      "type" : "number",
+      "x-stoplight" : {
+        "id" : "0g0wovshy2alv"
+      }
+    },
+    "name" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "kfzi6yjbtfl4c"
+      }
+    },
+    "vat_number" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "ca3zicaaksfhq"
+      }
+    },
+    "fiscal_code" : {
+      "type" : "string",
+      "x-stoplight" : {
+        "id" : "9t7mwnpgij6t0"
+      }
+    }
+  }
+};
             defs["userPromoteInput"] = {
   "title" : "user_enable_input",
   "type" : "object",
@@ -7926,6 +7999,12 @@
                     </li>
                     <li data-group="Default" data-name="v1UsersPost" class="">
                       <a href="#api-Default-v1UsersPost">v1UsersPost</a>
+                    </li>
+                    <li data-group="Default" data-name="v1UsersProfileGet" class="">
+                      <a href="#api-Default-v1UsersProfileGet">v1UsersProfileGet</a>
+                    </li>
+                    <li data-group="Default" data-name="v1UsersProfilePut" class="">
+                      <a href="#api-Default-v1UsersProfilePut">v1UsersProfilePut</a>
                     </li>
                     <li data-group="Default" data-name="v1UsersPromotePost" class="">
                       <a href="#api-Default-v1UsersPromotePost">v1UsersPromotePost</a>
@@ -53360,6 +53439,585 @@ except ApiException as e:
                             </div>
 
                             <h3> Status: 403 - 403 response </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - 500 response </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Default-v1UsersProfileGet">
+                      <article id="api-Default-v1UsersProfileGet-0" data-group="User" data-name="v1UsersProfileGet" data-version="0">
+                        <div class="pull-left">
+                          <h1>v1UsersProfileGet</h1>
+                          <p></p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Retrieves the user profile </p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/v1/users/profile</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-v1UsersProfileGet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-v1UsersProfileGet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-v1UsersProfileGet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-v1UsersProfileGet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-v1UsersProfileGet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-v1UsersProfileGet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-v1UsersProfileGet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-v1UsersProfileGet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-v1UsersProfileGet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-v1UsersProfileGet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-v1UsersProfileGet-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-v1UsersProfileGet-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+-H "Accept: application/json"\
+"https://mxp-public-api.prod.icadsistemi.com/v1/users/profile"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-v1UsersProfileGet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        
+        DefaultApi apiInstance = new DefaultApi();
+        try {
+            userProfileOutput result = apiInstance.v1UsersProfileGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#v1UsersProfileGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Default-v1UsersProfileGet-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        try {
+            userProfileOutput result = apiInstance.v1UsersProfileGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#v1UsersProfileGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-v1UsersProfileGet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-v1UsersProfileGet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+[apiInstance v1UsersProfileGetWithCompletionHandler: 
+              ^(userProfileOutput output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-v1UsersProfileGet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var PublicApi = require('public_api');
+
+var api = new PublicApi.DefaultApi()
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.v1UsersProfileGet(callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-v1UsersProfileGet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-v1UsersProfileGet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class v1UsersProfileGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new DefaultApi();
+
+            try
+            {
+                userProfileOutput result = apiInstance.v1UsersProfileGet();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.v1UsersProfileGet: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-v1UsersProfileGet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiDefaultApi();
+
+try {
+    $result = $api_instance->v1UsersProfileGet();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->v1UsersProfileGet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-v1UsersProfileGet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+
+eval { 
+    my $result = $api_instance->v1UsersProfileGet();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->v1UsersProfileGet: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-v1UsersProfileGet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+
+try: 
+    api_response = api_instance.v1_users_profile_get()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->v1UsersProfileGet: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-v1UsersProfileGet-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-v1UsersProfileGet-200-schema">
+                                  <div id='responses-v1UsersProfileGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/userProfileOutput"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-v1UsersProfileGet-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-v1UsersProfileGet-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-v1UsersProfileGet-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 404 - Not Found </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 422 - Unprocessable Entity (WebDAV) </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Default-v1UsersProfilePut">
+                      <article id="api-Default-v1UsersProfilePut-0" data-group="User" data-name="v1UsersProfilePut" data-version="0">
+                        <div class="pull-left">
+                          <h1>v1UsersProfilePut</h1>
+                          <p></p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Inserts a new user profile or updates an already existing one</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="put"><code><span class="pln">/v1/users/profile</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-v1UsersProfilePut-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-v1UsersProfilePut-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-v1UsersProfilePut-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-v1UsersProfilePut-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-v1UsersProfilePut-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-v1UsersProfilePut-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-v1UsersProfilePut-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-v1UsersProfilePut-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-v1UsersProfilePut-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-v1UsersProfilePut-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-v1UsersProfilePut-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-v1UsersProfilePut-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X PUT\
+\
+-H "Content-Type: application/json"\
+"https://mxp-public-api.prod.icadsistemi.com/v1/users/profile"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-v1UsersProfilePut-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure OAuth2 access token for authorization: cognito
+        OAuth cognito = (OAuth) defaultClient.getAuthentication("cognito");
+        cognito.setAccessToken("YOUR ACCESS TOKEN");
+
+        DefaultApi apiInstance = new DefaultApi();
+        UserProfileInput body = ; // UserProfileInput | 
+        try {
+            apiInstance.v1UsersProfilePut(body);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#v1UsersProfilePut");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Default-v1UsersProfilePut-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        UserProfileInput body = ; // UserProfileInput | 
+        try {
+            apiInstance.v1UsersProfilePut(body);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#v1UsersProfilePut");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-v1UsersProfilePut-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-v1UsersProfilePut-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure OAuth2 access token for authorization: (authentication scheme: cognito)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+UserProfileInput *body = ; // 
+
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+[apiInstance v1UsersProfilePutWith:body
+              completionHandler: ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-v1UsersProfilePut-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var PublicApi = require('public_api');
+var defaultClient = PublicApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: cognito
+var cognito = defaultClient.authentications['cognito'];
+cognito.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new PublicApi.DefaultApi()
+var body = ; // {{UserProfileInput}} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.v1UsersProfilePut(body, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-v1UsersProfilePut-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-v1UsersProfilePut-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class v1UsersProfilePutExample
+    {
+        public void main()
+        {
+
+            // Configure OAuth2 access token for authorization: cognito
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new DefaultApi();
+            var body = new UserProfileInput(); // UserProfileInput | 
+
+            try
+            {
+                apiInstance.v1UsersProfilePut(body);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.v1UsersProfilePut: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-v1UsersProfilePut-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: cognito
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new Swagger\Client\ApiDefaultApi();
+$body = ; // UserProfileInput | 
+
+try {
+    $api_instance->v1UsersProfilePut($body);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->v1UsersProfilePut: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-v1UsersProfilePut-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+# Configure OAuth2 access token for authorization: cognito
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $body = WWW::SwaggerClient::Object::UserProfileInput->new(); # UserProfileInput | 
+
+eval { 
+    $api_instance->v1UsersProfilePut(body => $body);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->v1UsersProfilePut: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-v1UsersProfilePut-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: cognito
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+body =  # UserProfileInput | 
+
+try: 
+    api_instance.v1_users_profile_put(body)
+except ApiException as e:
+    print("Exception when calling DefaultApi->v1UsersProfilePut: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">body <span style="color:red;">*</span></td>
+                                <td>
+                                
+                                
+                                <script>
+                                $(document).ready(function() {
+                                  var schemaWrapper = {
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/userProfileInput"
+      }
+    }
+  },
+  "required" : true
+};
+                                  var schema = schemaWrapper.content["application/json"].schema;
+                                  if (schema.$ref != null) {
+                                    schema = defsParser.$refs.get(schema.$ref);
+                                  } else {
+                                    schemaWrapper.components = {};
+                                    schemaWrapper.components.schemas = Object.assign({}, defs);
+                                    $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                      console.log(err);
+                                    });
+                                  }
+                                
+                                  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+                                  var result = $('#d2e199_v1UsersProfilePut_body');
+                                  result.empty();
+                                  result.append(view.render());
+                                });
+                                </script>
+                                <div id="d2e199_v1UsersProfilePut_body"></div>
+                                </td>
+                                </tr>
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - 204 response </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 422 - 400 response </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                             </ul>
