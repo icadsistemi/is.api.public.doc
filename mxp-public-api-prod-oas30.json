@@ -5432,6 +5432,67 @@
         ]
       }
     },
+    "/v1/users/profile": {
+      "put": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/userProfileInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "204 response",
+            "content": {}
+          },
+          "422": {
+            "description": "400 response",
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "cognito": []
+          }
+        ],
+        "description": "Inserts a new user profile or updates an already existing one"
+      },
+      "parameters": [],
+      "get": {
+        "summary": "",
+        "operationId": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userProfileOutput"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "description": "Retrieves the user profile "
+      }
+    },
     "/v1/users/{id}": {
       "put": {
         "parameters": [
@@ -13768,6 +13829,128 @@
             "type": "number",
             "x-stoplight": {
               "id": "jh0q7bxan0niy"
+            }
+          }
+        }
+      },
+      "userProfileOutput": {
+        "title": "userProfileOutput",
+        "x-stoplight": {
+          "id": "sa77f9ud1t2gp"
+        },
+        "type": "object",
+        "properties": {
+          "user_profile": {
+            "type": "object",
+            "x-stoplight": {
+              "id": "1wtrqp2nh3quz"
+            },
+            "properties": {
+              "username": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "7vsm4o6kuf6s0"
+                }
+              },
+              "favourite_customers": {
+                "type": "array",
+                "x-stoplight": {
+                  "id": "ilug8xc654x1d"
+                },
+                "items": {
+                  "x-stoplight": {
+                    "id": "6r95qqb3ckuee"
+                  },
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "x-stoplight": {
+                        "id": "0g0wovshy2alv"
+                      }
+                    },
+                    "name": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "kfzi6yjbtfl4c"
+                      }
+                    },
+                    "vat_number": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "ca3zicaaksfhq"
+                      }
+                    },
+                    "fiscal_code": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "9t7mwnpgij6t0"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "userProfileInput": {
+        "title": "userProfileInput",
+        "x-stoplight": {
+          "id": "6pgawigyqvdbv"
+        },
+        "type": "object",
+        "properties": {
+          "user_profile": {
+            "type": "object",
+            "x-stoplight": {
+              "id": "1wtrqp2nh3quz"
+            },
+            "properties": {
+              "username": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "7vsm4o6kuf6s0"
+                }
+              },
+              "favourite_customers": {
+                "type": "array",
+                "x-stoplight": {
+                  "id": "ilug8xc654x1d"
+                },
+                "items": {
+                  "x-stoplight": {
+                    "id": "6r95qqb3ckuee"
+                  },
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "x-stoplight": {
+                        "id": "0g0wovshy2alv"
+                      }
+                    },
+                    "name": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "kfzi6yjbtfl4c"
+                      }
+                    },
+                    "vat_number": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "ca3zicaaksfhq"
+                      }
+                    },
+                    "fiscal_code": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "9t7mwnpgij6t0"
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
